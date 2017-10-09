@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjtx.report.dao.TBUserResourceDOMapper" >
+  <resultMap id="BaseResultMap" type="cn.zjtx.report.entity.TBUserResourceDO" >
+    <id column="user_resource_id" property="userResourceId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="resource_id" property="resourceId" jdbcType="INTEGER" />
+    <result column="active" property="active" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    user_resource_id, user_id, resource_id, active, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_B_USER_RESOURCE
+    where user_resource_id = #{userResourceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_B_USER_RESOURCE
+    where user_resource_id = #{userResourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
+    insert into T_B_USER_RESOURCE (user_resource_id, user_id, resource_id, 
+      active, create_time, update_time
+      )
+    values (#{userResourceId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, 
+      #{active,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
+    insert into T_B_USER_RESOURCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userResourceId != null" >
+        user_resource_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userResourceId != null" >
+        #{userResourceId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
+    update T_B_USER_RESOURCE
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceId != null" >
+        resource_id = #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_resource_id = #{userResourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
+    update T_B_USER_RESOURCE
+    set user_id = #{userId,jdbcType=INTEGER},
+      resource_id = #{resourceId,jdbcType=INTEGER},
+      active = #{active,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where user_resource_id = #{userResourceId,jdbcType=INTEGER}
+  </update>
+</mapper>

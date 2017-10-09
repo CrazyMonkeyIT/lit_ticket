@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjtx.report.dao.IndustrySasacDOMapper" >
+  <resultMap id="BaseResultMap" type="cn.zjtx.report.entity.IndustrySasacDO" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="INDUSTRY_NAME" property="industryName" jdbcType="VARCHAR" />
+    <result column="INDUSTRY_CODE" property="industryCode" jdbcType="VARCHAR" />
+    <result column="PARENT_ID" property="parentId" jdbcType="INTEGER" />
+    <result column="Computing_coefficient" property="computingCoefficient" jdbcType="DECIMAL" />
+    <result column="ACTIVE" property="active" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="order_no" property="orderNo" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, INDUSTRY_NAME, INDUSTRY_CODE, PARENT_ID, Computing_coefficient, ACTIVE, create_time, 
+    update_time, order_no
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from INDUSTRY_SASAC
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from INDUSTRY_SASAC
+    where ACTIVE = 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from INDUSTRY_SASAC
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.zjtx.report.entity.IndustrySasacDO" >
+    insert into INDUSTRY_SASAC (INDUSTRY_NAME, INDUSTRY_CODE, 
+      PARENT_ID, Computing_coefficient, ACTIVE, 
+      create_time, update_time, order_no
+      )
+    values (#{industryName,jdbcType=VARCHAR}, #{industryCode,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=INTEGER}, #{computingCoefficient,jdbcType=DECIMAL}, 1, 
+      now(), now(), #{orderNo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.zjtx.report.entity.IndustrySasacDO" >
+    insert into INDUSTRY_SASAC
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="industryName != null" >
+        INDUSTRY_NAME,
+      </if>
+      <if test="industryCode != null" >
+        INDUSTRY_CODE,
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID,
+      </if>
+      <if test="computingCoefficient != null" >
+        Computing_coefficient,
+      </if>
+      <if test="active != null" >
+        ACTIVE,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="industryName != null" >
+        #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryCode != null" >
+        #{industryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="computingCoefficient != null" >
+        #{computingCoefficient,jdbcType=DECIMAL},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.zjtx.report.entity.IndustrySasacDO" >
+    update INDUSTRY_SASAC
+    <set >
+      <if test="industryName != null" >
+        INDUSTRY_NAME = #{industryName,jdbcType=VARCHAR},
+      </if>
+      <if test="industryCode != null" >
+        INDUSTRY_CODE = #{industryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null" >
+        PARENT_ID = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="computingCoefficient != null" >
+        Computing_coefficient = #{computingCoefficient,jdbcType=DECIMAL},
+      </if>
+      <if test="active != null" >
+        ACTIVE = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.IndustrySasacDO" >
+    update INDUSTRY_SASAC
+    set INDUSTRY_NAME = #{industryName,jdbcType=VARCHAR},
+      INDUSTRY_CODE = #{industryCode,jdbcType=VARCHAR},
+      PARENT_ID = #{parentId,jdbcType=INTEGER},
+      Computing_coefficient = #{computingCoefficient,jdbcType=DECIMAL},
+      ACTIVE = #{active,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      order_no = #{orderNo,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

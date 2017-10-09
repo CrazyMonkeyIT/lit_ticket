@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zjtx.report.dao.TBResourcesDOMapper" >
+  <resultMap id="BaseResultMap" type="cn.zjtx.report.entity.TBResourcesDO" >
+    <id column="resource_id" property="resourceId" jdbcType="INTEGER" />
+    <result column="resource_name" property="resourceName" jdbcType="VARCHAR" />
+    <result column="resource_code" property="resourceCode" jdbcType="VARCHAR" />
+    <result column="resource_url" property="resourceUrl" jdbcType="VARCHAR" />
+    <result column="resource_desc" property="resourceDesc" jdbcType="VARCHAR" />
+    <result column="css_cls" property="cssCls" jdbcType="VARCHAR" />
+    <result column="order_no" property="orderNo" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="resource_type" property="resourceType" jdbcType="INTEGER" />
+    <result column="active" property="active" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resource_id, resource_name, resource_code, resource_url, resource_desc, css_cls, 
+    order_no, parent_id, resource_type, active, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from T_B_RESOURCES
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  	select 
+  		a.resource_id, a.resource_name, a.resource_code, a.resource_url, a.resource_desc, 
+  		a.css_cls,a.active, a.create_time, a.update_time,a.order_no, a.parent_id, a.resource_type
+  	from T_B_RESOURCES a inner join T_B_USER_RESOURCE b on a.resource_id = b.resource_id 
+  	where a.active = 1 and b.active = 1 and b.user_id = #{userId,jdbcType=INTEGER} 
+  	order by order_no asc
+  </select>
+  <select id="selectAllActive" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from T_B_RESOURCES
+    where active = 1
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from T_B_RESOURCES
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
+    insert into T_B_RESOURCES (resource_id, resource_name, resource_code, 
+      resource_url, resource_desc, css_cls, 
+      order_no, parent_id, resource_type, 
+      active, create_time, update_time
+      )
+    values (#{resourceId,jdbcType=INTEGER}, #{resourceName,jdbcType=VARCHAR}, #{resourceCode,jdbcType=VARCHAR}, 
+      #{resourceUrl,jdbcType=VARCHAR}, #{resourceDesc,jdbcType=VARCHAR}, #{cssCls,jdbcType=VARCHAR}, 
+      #{orderNo,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{resourceType,jdbcType=INTEGER}, 
+      #{active,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
+    insert into T_B_RESOURCES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        resource_id,
+      </if>
+      <if test="resourceName != null" >
+        resource_name,
+      </if>
+      <if test="resourceCode != null" >
+        resource_code,
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url,
+      </if>
+      <if test="resourceDesc != null" >
+        resource_desc,
+      </if>
+      <if test="cssCls != null" >
+        css_cls,
+      </if>
+      <if test="orderNo != null" >
+        order_no,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="resourceType != null" >
+        resource_type,
+      </if>
+      <if test="active != null" >
+        active,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resourceId != null" >
+        #{resourceId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceName != null" >
+        #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceCode != null" >
+        #{resourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceDesc != null" >
+        #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cssCls != null" >
+        #{cssCls,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
+    update T_B_RESOURCES
+    <set >
+      <if test="resourceName != null" >
+        resource_name = #{resourceName,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceCode != null" >
+        resource_code = #{resourceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceUrl != null" >
+        resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceDesc != null" >
+        resource_desc = #{resourceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cssCls != null" >
+        css_cls = #{cssCls,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNo != null" >
+        order_no = #{orderNo,jdbcType=INTEGER},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
+      </if>
+      <if test="resourceType != null" >
+        resource_type = #{resourceType,jdbcType=INTEGER},
+      </if>
+      <if test="active != null" >
+        active = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
+    update T_B_RESOURCES
+    set resource_name = #{resourceName,jdbcType=VARCHAR},
+      resource_code = #{resourceCode,jdbcType=VARCHAR},
+      resource_url = #{resourceUrl,jdbcType=VARCHAR},
+      resource_desc = #{resourceDesc,jdbcType=VARCHAR},
+      css_cls = #{cssCls,jdbcType=VARCHAR},
+      order_no = #{orderNo,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      resource_type = #{resourceType,jdbcType=INTEGER},
+      active = #{active,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where resource_id = #{resourceId,jdbcType=INTEGER}
+  </update>
+</mapper>

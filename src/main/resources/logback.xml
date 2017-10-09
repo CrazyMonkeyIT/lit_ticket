@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>  
+<configuration scan="true" scanPeriod="30 seconds" debug="false">
+
+	<!-- appender -->  
+	<appender name="CONSOLE-APPENDER" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder charset="UTF-8" />
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger[%t] - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="DEFAULT-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder charset="UTF-8" />
+		<file>/Users/maowankui/Documents/myronspace/logs/default.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/Users/maowankui/Documents/myronspace/logs/default.log.%d{yyyy-MM-dd}.zip</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger[%t] - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<appender name="ERROR-APPENDER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<encoder charset="UTF-8" />
+		<file>/Users/maowankui/Documents/myronspace/logs/error.log</file>
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">   
+			<level>ERROR</level>   
+			<onMatch>ACCEPT</onMatch>   
+			<onMismatch>DENY</onMismatch>   
+		</filter> 
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>/Users/maowankui/Documents/myronspace/logs/error.log.%d{yyyy-MM-dd}.zip</fileNamePattern>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</Pattern>
+		</layout>
+	</appender>
+
+	<!-- logger -->  
+	<logger name="cn.zjtx.crm">
+		<level value="debug" />
+	</logger>
+	<logger name="org.mybatis">
+		<level value="debug" />
+	</logger>
+	<logger name="java.sql">
+		<level value="debug" />
+	</logger>
+	<logger name="org.apache.commons">
+		<level value="debug" />
+	</logger>
+	<logger name="org.springframework">
+		<level value="debug" />
+	</logger>
+
+	<!-- root -->  
+	<root level="debug">  
+		<appender-ref ref="CONSOLE-APPENDER" /> 
+		<appender-ref ref="DEFAULT-APPENDER" />
+		<appender-ref ref="ERROR-APPENDER" />  
+	</root>  
+</configuration>  

@@ -7,7 +7,7 @@ import cn.zjtx.report.entity.IndustrySasacDO;
 public interface IndustrySasacService {
 
 	
-	public List<IndustrySasacDO> selectAll();
+	List<IndustrySasacDO> selectAll();
 	
-	public void saveIndustry(IndustrySasacDO industry);
+	void saveIndustry(IndustrySasacDO industry);
 }

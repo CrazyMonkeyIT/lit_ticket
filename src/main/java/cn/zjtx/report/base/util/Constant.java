@@ -11,7 +11,7 @@ package cn.zjtx.report.base.util;
 public class Constant {
 	
 	/**
-     * 订单状态(TRvADggE_NO_CREATE_PAY(没有创建支付宝交易)
+     * 订单状态(TRADE_NO_CREATE_PAY(没有创建支付宝交易)
  	 * WAIT_BUYER_PAY(等待买家付款) 
  	 * WAIT_SELLER_SEND_GOODS(等待卖家发货,即:买家已付款)
  	 * WAIT_BUYER_CONFIRM_GOODS(等待买家确认收货,即:卖家已发货)

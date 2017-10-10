@@ -1,15 +1,13 @@
 package cn.zjtx.report.service.base;
 
 import cn.zjtx.report.entity.TBLoginUserDO;
+import com.github.pagehelper.PageInfo;
 
 public interface LoginUserService {
 
-	/**
-	 * 根据登录名称查询用户信息
-	 * @param loginName
-	 * @return
-	 */
 	public TBLoginUserDO selectByLoginName(String loginName);
-	
-	public void update(TBLoginUserDO loginUser);
+
+	public void insertOrUpdate(TBLoginUserDO loginUser);
+
+	public PageInfo<TBLoginUserDO> selectUserList(Integer userId, String userName, String pageIndex, String pageSize);
 }

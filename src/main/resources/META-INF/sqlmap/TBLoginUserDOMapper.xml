@@ -34,16 +34,16 @@
     delete from T_B_LOGIN_USER
     where user_id = #{userId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.zjtx.report.entity.TBLoginUserDO" >
-    insert into T_B_LOGIN_USER (user_id, user_name, login_name, 
-      login_pwd, user_status, login_invalid, 
-      parent_id, last_login_time, create_time, 
-      last_login_ip, update_time)
-    values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{loginName,jdbcType=VARCHAR}, 
-      #{loginPwd,jdbcType=VARCHAR}, #{userStatus,jdbcType=INTEGER}, #{loginInvalid,jdbcType=TIMESTAMP}, 
-      #{parentId,jdbcType=INTEGER}, #{lastLoginTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{lastLoginIp,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
-  </insert>
+  <!-- 查询用户列表 -->
+  <select id="selectUserList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from T_B_LOGIN_USER where parent_id = #{userId}
+    <if test="userName != NULL" >
+    and login_name like CONCAT('%',#{userName},'%')
+    </if>
+    order by create_time desc
+  </select>
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBLoginUserDO" >
     insert into T_B_LOGIN_USER
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -153,18 +153,5 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.TBLoginUserDO" >
-    update T_B_LOGIN_USER
-    set user_name = #{userName,jdbcType=VARCHAR},
-      login_name = #{loginName,jdbcType=VARCHAR},
-      login_pwd = #{loginPwd,jdbcType=VARCHAR},
-      user_status = #{userStatus,jdbcType=INTEGER},
-      login_invalid = #{loginInvalid,jdbcType=TIMESTAMP},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where user_id = #{userId,jdbcType=INTEGER}
-  </update>
+
 </mapper>

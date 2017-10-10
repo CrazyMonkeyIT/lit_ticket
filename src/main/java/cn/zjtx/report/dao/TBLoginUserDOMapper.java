@@ -1,11 +1,13 @@
 package cn.zjtx.report.dao;
 
 import cn.zjtx.report.entity.TBLoginUserDO;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 public interface TBLoginUserDOMapper {
     int deleteByPrimaryKey(Integer userId);
-
-    int insert(TBLoginUserDO record);
 
     int insertSelective(TBLoginUserDO record);
 
@@ -15,5 +17,5 @@ public interface TBLoginUserDOMapper {
 
     int updateByPrimaryKeySelective(TBLoginUserDO record);
 
-    int updateByPrimaryKey(TBLoginUserDO record);
+    List<TBLoginUserDO> selectUserList(@Param("userId") Integer userId, @Param("userName") String userName);
 }

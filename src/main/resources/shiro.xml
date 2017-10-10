@@ -72,17 +72,9 @@
        </property>  
        <property name="filterChainDefinitions">
 	   		<value>
-				/test/** = anon
-				/ajax/** = anon
 				/loginSubmit.html = anon
 				/logout.html = logout
-				/wx/chat/* = anon
-				/wx/linkConvert/Convert.html = anon
-				/approve/** = anon
-				/wx/auth/** = anon
-				/wx/toUrlPage.html=anon
-				/common/error/* = anon
-				/common/exception/* = anon
+				/exception/* = anon
 				/error/* = anon
 				/** = authc
 			</value>

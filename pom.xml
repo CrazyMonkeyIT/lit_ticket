@@ -229,7 +229,13 @@
 		    <groupId>org.slf4j</groupId>  
 		    <artifactId>jcl-over-slf4j</artifactId>  
 		    <version>1.7.12</version>  
-		</dependency>  
+		</dependency>
+		<!-- 分页插件 -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper</artifactId>
+			<version>4.0.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>shzjtx</finalName>

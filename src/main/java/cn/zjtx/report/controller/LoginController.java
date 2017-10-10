@@ -52,8 +52,9 @@ public class LoginController {
 	@ResponseBody
 	public BaseResult loginSubmit(HttpServletRequest req, HttpServletResponse resp,String loginname,String password){
 		BaseResult result = new BaseResult(false,"account_error");
+		Subject subject = null;
 		try {
-			Subject subject = SecurityUtils.getSubject();
+			subject = SecurityUtils.getSubject();
 			UsernamePasswordToken token = new UsernamePasswordToken(loginname,password);
 			subject.login(token);
 		} catch (UnknownAccountException uae) {
@@ -79,11 +80,11 @@ public class LoginController {
 		}
 		
 		TBLoginUserDO loginUser = loginUserService.selectByLoginName(loginname);
-		
+		subject.getSession().setAttribute("currUser",loginUser);
 		Date updateTime = new Date();		
 		loginUser.setLastLoginTime(updateTime);
         loginUser.setUpdateTime(updateTime);
-        loginUserService.update(loginUser);
+        loginUserService.insertOrUpdate(loginUser);
         
         List<TBResourcesDO> userResources = resourcesService.selectByUserId(loginUser.getUserId());
         userResources = resourcesOper(userResources);
@@ -109,4 +110,5 @@ public class LoginController {
 		}
 		return userResources;
 	}
+
 }

@@ -10,9 +10,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/index.html", method = RequestMethod.GET)
 	public ModelAndView index(ModelAndView mv){
-		
 		mv.setViewName("pages/index");
-		
 		return mv;
 	}
 }

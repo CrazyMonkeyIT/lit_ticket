@@ -6,6 +6,7 @@ package cn.zjtx.report.base.util;
  * @author wubikang
  * @date 2017年4月11日 下午1:04:04 
  * @version V0.1 
+ * 
  */
 public class Constant {
 	

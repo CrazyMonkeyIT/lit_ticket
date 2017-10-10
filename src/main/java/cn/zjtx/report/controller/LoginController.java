@@ -28,9 +28,12 @@ import cn.zjtx.report.entity.TBResourcesDO;
 import cn.zjtx.report.service.base.LoginUserService;
 import cn.zjtx.report.service.base.ResourcesService;
 
+/**
+ * 登录
+ */
 @Controller
 public class LoginController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Autowired

@@ -9,5 +9,6 @@ public class DateUtil {
 			return null;
 		}
 		return new SimpleDateFormat(format).format(date);
+
 	}
 }

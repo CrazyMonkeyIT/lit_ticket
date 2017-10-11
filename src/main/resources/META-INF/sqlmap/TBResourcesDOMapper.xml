@@ -44,18 +44,7 @@
     delete from T_B_RESOURCES
     where resource_id = #{resourceId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
-    insert into T_B_RESOURCES (resource_id, resource_name, resource_code, 
-      resource_url, resource_desc, css_cls, 
-      order_no, parent_id, resource_type, 
-      active, create_time, update_time
-      )
-    values (#{resourceId,jdbcType=INTEGER}, #{resourceName,jdbcType=VARCHAR}, #{resourceCode,jdbcType=VARCHAR}, 
-      #{resourceUrl,jdbcType=VARCHAR}, #{resourceDesc,jdbcType=VARCHAR}, #{cssCls,jdbcType=VARCHAR}, 
-      #{orderNo,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{resourceType,jdbcType=INTEGER}, 
-      #{active,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
+
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
     insert into T_B_RESOURCES
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -174,19 +163,5 @@
     </set>
     where resource_id = #{resourceId,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
-    update T_B_RESOURCES
-    set resource_name = #{resourceName,jdbcType=VARCHAR},
-      resource_code = #{resourceCode,jdbcType=VARCHAR},
-      resource_url = #{resourceUrl,jdbcType=VARCHAR},
-      resource_desc = #{resourceDesc,jdbcType=VARCHAR},
-      css_cls = #{cssCls,jdbcType=VARCHAR},
-      order_no = #{orderNo,jdbcType=INTEGER},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      resource_type = #{resourceType,jdbcType=INTEGER},
-      active = #{active,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
-    where resource_id = #{resourceId,jdbcType=INTEGER}
-  </update>
+
 </mapper>

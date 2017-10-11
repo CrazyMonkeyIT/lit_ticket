@@ -39,7 +39,7 @@
     select
     <include refid="Base_Column_List" />
     from T_B_LOGIN_USER where parent_id = #{userId}
-    <if test="userName != NULL" >
+    <if test="userName != null" >
     and login_name like CONCAT('%',#{userName},'%')
     </if>
     order by create_time desc

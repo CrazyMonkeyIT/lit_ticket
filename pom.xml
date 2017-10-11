@@ -96,13 +96,13 @@
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.1.1</version>
+			<version>1.2.0</version>
 		</dependency>
 		<!-- Mybatis 和Spring的 整合包，是mybatis出的 -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.1.1</version>
+			<version>3.2.2</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>

@@ -16,12 +16,20 @@ import com.alibaba.druid.support.json.JSONUtils;
 import cn.zjtx.report.entity.TBResourcesDO;
 import cn.zjtx.report.service.base.ResourcesService;
 
+/**
+ * 资源管理
+ */
 @Controller
 public class ResourceController {
 
 	@Autowired
 	private ResourcesService resourcesService;
-	
+
+	/**
+	 * 获取资源列表
+	 * @param mv
+	 * @return
+	 */
 	@RequestMapping(value = "/sys/resouce.html", method = RequestMethod.GET)
 	public ModelAndView list(ModelAndView mv){
 		List<TBResourcesDO> resources = resourcesService.selectAll();

@@ -22,14 +22,6 @@
     delete from T_B_USER_RESOURCE
     where user_resource_id = #{userResourceId,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
-    insert into T_B_USER_RESOURCE (user_resource_id, user_id, resource_id, 
-      active, create_time, update_time
-      )
-    values (#{userResourceId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{resourceId,jdbcType=INTEGER}, 
-      #{active,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
-  </insert>
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
     insert into T_B_USER_RESOURCE
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -92,15 +84,6 @@
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where user_resource_id = #{userResourceId,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
-    update T_B_USER_RESOURCE
-    set user_id = #{userId,jdbcType=INTEGER},
-      resource_id = #{resourceId,jdbcType=INTEGER},
-      active = #{active,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where user_resource_id = #{userResourceId,jdbcType=INTEGER}
   </update>
 </mapper>

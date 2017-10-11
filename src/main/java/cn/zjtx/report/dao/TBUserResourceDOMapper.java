@@ -1,11 +1,11 @@
 package cn.zjtx.report.dao;
 
 import cn.zjtx.report.entity.TBUserResourceDO;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface TBUserResourceDOMapper {
     int deleteByPrimaryKey(Integer userResourceId);
-
-    int insert(TBUserResourceDO record);
 
     int insertSelective(TBUserResourceDO record);
 
@@ -13,6 +13,5 @@ public interface TBUserResourceDOMapper {
 
     int updateByPrimaryKeySelective(TBUserResourceDO record);
 
-    int updateByPrimaryKey(TBUserResourceDO record);
-    
+
 }

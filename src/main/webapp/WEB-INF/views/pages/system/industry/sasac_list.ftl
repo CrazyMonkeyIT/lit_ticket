@@ -1,5 +1,5 @@
 <@ui.layout >
-<link rel="stylesheet" href="${rc.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
 
 <div class="row">
 	<div class="col-xs-3">
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 				<div class="row">
-					<form action="${rc.contextPath}/sys/industry/saveSasac.html" id="sasac_form" method="post">
+					<form action="${request.contextPath}/sys/industry/saveSasac.html" id="sasac_form" method="post">
 						<input name="parentId" id="sasac_parentId" type="hidden"/>
 						<input name="orderNo" id="sasac_orderNo" type="hidden"/>
 						<div class="col-xs-12" style="margin-bottom:10px;">
@@ -130,5 +130,5 @@ $(document).ready(function(){
 });
 </script>
 <!-- zTree -->
-<script src="${rc.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
+<script src="${request.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
 </@ui.layout>

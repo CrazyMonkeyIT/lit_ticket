@@ -1,5 +1,5 @@
 <@ui.layout >
-<link rel="stylesheet" href="${rc.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
+<link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
 
 <div class="row">
 	<div class="col-xs-3">
@@ -142,7 +142,7 @@
                          node.pId=0;
                     }
                     $.ajax({
-                            url : '${rc.contextPath}/system/resource/changeResource.html',
+                            url : '${request.contextPath}/system/resource/changeResource.html',
                             type : 'post',
                             data : {
                                 'upName'    : node.name,
@@ -183,7 +183,7 @@
                          node.pId=0;
                       }
                       $.ajax({
-                            url : '${rc.contextPath}/system/resource/changeResource.html',
+                            url : '${request.contextPath}/system/resource/changeResource.html',
                             type : 'post',
                             data : {
                                 'upName'    : node.name,
@@ -243,7 +243,7 @@
             }
         }
         function onRemove(e, treeId, treeNode) {
-            window.location.href = '${rc.contextPath}/system/resource/resourceManage.html';
+            window.location.href = '${request.contextPath}/system/resource/resourceManage.html';
         }
         function beforeRename(treeId, treeNode, newName, isCancel) {
             if (newName.length == 0) {
@@ -308,5 +308,5 @@
 	});
 </script>
 <!-- zTree -->
-<script src="${rc.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
+<script src="${request.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
 </@ui.layout>

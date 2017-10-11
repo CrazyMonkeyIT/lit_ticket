@@ -37,7 +37,7 @@
 	</appender>
 
 	<!-- logger -->  
-	<logger name="cn.zjtx.crm">
+	<logger name="cn.zjtx.report">
 		<level value="debug" />
 	</logger>
 	<logger name="org.mybatis">

@@ -73,7 +73,7 @@
         <property name="prefix" value="" />  
         <property name="suffix" value=".ftl" />  
         <property name="contentType" value="text/html;charset=UTF-8"></property>  
-        <property name="requestContextAttribute" value="rc" />  
+        <property name="requestContextAttribute" value="request" />
         <property name="exposeSpringMacroHelpers" value="true" />  
         <property name="exposeRequestAttributes" value="true" />  
         <property name="exposeSessionAttributes" value="true" />

@@ -9,4 +9,6 @@ public interface ResourcesService {
 	public List<TBResourcesDO> selectByUserId(Integer userId);
 	
 	public List<TBResourcesDO> selectAll();
+
+	boolean insertOrUpdate(TBResourcesDO record);
 }

@@ -49,7 +49,8 @@ public class LoginUserServiceImpl implements LoginUserService {
 		size = (size==null || StringUtil.isBlank(size))?"10":size;
 		PageHelper.startPage(Integer.parseInt(page), Integer.parseInt(size));
 		List<TBLoginUserDO> list = loginUserDOMapper.selectUserList(userId,userName);
-		return new PageInfo<TBLoginUserDO>(list);
+		PageInfo<TBLoginUserDO> r = new PageInfo<TBLoginUserDO>(list);
+		return r;
 	}
 
 }

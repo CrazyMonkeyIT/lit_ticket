@@ -14,6 +14,8 @@ import javax.annotation.Resource;
 
 /**
  * 用户管理
+ * @author xiaxin
+ * @date 2017-10-11
  */
 @Controller
 @RequestMapping("/sys/user")
@@ -28,11 +30,15 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/list.html")
     public String list(ModelMap modelMap,String userName,String pageIndex){
+        PageInfo<TBLoginUserDO> page = null;
         try{
-            PageInfo<TBLoginUserDO> page =  loginUserService.selectUserList(getCurrentUser().getUserId(),userName,pageIndex,null);
+            page =  loginUserService.selectUserList(getCurrentUser().getUserId(),userName,pageIndex,null);
         }catch(Exception e){
             logger.error("获取用户列表异常",e);
         }
+        modelMap.addAttribute("page",page);
+        modelMap.addAttribute("pageIndex",pageIndex);
+        modelMap.addAttribute("userName",userName);
         return "pages/system/user/list";
     }
 }

@@ -72,7 +72,7 @@ public class LoginController {
 				result.setMsg("account_invalid");
 				return result;
 			}
-			logger.error("登录失败",ae);
+			logger.error("登录失败，账户失效",ae);
 			return result;
 		} catch(Exception e){
 			logger.error("登录失败：",e);
@@ -94,7 +94,7 @@ public class LoginController {
         }
         req.getSession().setAttribute("menuList", userResources);
 		result.setSuccess(true);
-		result.setMsg("login success");
+		result.setMsg("success");
 		return result;
 	}
 	

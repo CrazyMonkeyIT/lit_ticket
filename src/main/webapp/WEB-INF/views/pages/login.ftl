@@ -71,9 +71,10 @@
     <p>认证中...</p>
 </div>
 <div class="OverWindows"></div>
-<link href="${request.contextPath}/static/login/layui/css/layui.css" rel="stylesheet" type="text/css" />
+<!-- layui提示插件 -->
+<link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
+<script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
 <script src='${request.contextPath}/static/assets/js/jquery-2.0.3.min.js'></script>
-<script src="${request.contextPath}/static/login/layui/layui.js" type="text/javascript"></script>
 <script src="${request.contextPath}/static/login/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="${request.contextPath}/static/login/js/stopExecutionOnTimeout.js?t=1" type="text/javascript"></script>
 <script src="${request.contextPath}/static/login/js/Treatment.js" type="text/javascript"></script>
@@ -119,9 +120,11 @@
             var login = $('input[name="login"]').val();
             var pwd = $('input[name="pwd"]').val();
             if (login == '') {
-                ErroAlert('请输入您的账号');
+                $('input[name="login"]').focus();
+                layer.msg('请输入您的账号');
             } else if (pwd == '') {
-                ErroAlert('请输入密码');
+                $('input[name="pwd"]').focus();
+                layer.msg('请输入密码');
             } else {
                 //认证中..
                 $('.login').addClass('test'); //倾斜特效
@@ -149,7 +152,7 @@
                         'loginname' : login,
                         'password' : pwd
                     },
-                    success : function(msg) {
+                    success : function(data) {
                             setTimeout(function () {
                                 $('.authent').show().animate({ right: 90 }, {
                                     easing: 'easeOutQuint',
@@ -165,17 +168,32 @@
                             setTimeout(function () {
                                 $('.authent').hide();
                                 $('.login').removeClass('test');
-                                if (msg.success) {
+                                if (data.success) {
                                     //登录成功
-                                    $('.login div').fadeOut(100);
-                                    $('.success').fadeIn(1000);
-                                    $('.success').html("恭喜，登录成功");
+//                                   $('.login div').fadeOut(100);
+//                                   $('.success').fadeIn(1000);
+//                                   $('.success').html("恭喜，登录成功");
                                     //跳转操作
-                                    setTimeout(function(){
-                                        window.location.href = '${request.contextPath}/index.html';
-                                    },2000);
+                                    window.location.href = '${request.contextPath}/index.html';
                                 } else {
-                                    ErroAlert("账号名或密码有误");
+                                    switch(data.msg){
+                                        case "account_error":
+                                            layer.msg("用户名或密码错误");
+                                            break;
+                                        case "account_lock":
+                                            layer.msg("登录失败，账户冻结");
+                                            break;
+                                        case "account_invalid":
+                                            layer.msg("登录失败，账户失效");
+                                            break;
+                                        case "no_permission":
+                                            layer.msg("登录失败，无权限");
+                                            break;
+                                        default:
+                                            layer.msg("登录失败，未知错误");
+                                            break;
+                                    }
+
                                 }
                             }, 2400);
                     }

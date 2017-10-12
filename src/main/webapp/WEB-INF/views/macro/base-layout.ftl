@@ -27,6 +27,10 @@
 	<!-- ace settings handler -->
 
     <script src="${request.contextPath}/static/assets/js/jquery-2.0.3.min.js"></script>
+
+    <!-- layui提示插件 -->
+    <link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
+    <script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
 </head>
 	
 <body>
@@ -173,6 +177,7 @@
 	<script src="${request.contextPath}/static/assets/js/ace-elements.min.js"></script>
 	<script src="${request.contextPath}/static/assets/js/ace.min.js"></script>
 	<!-- inline scripts related to this page -->
+
 	<script>
         function logout(){
             window.location.href='${request.contextPath}/logout.html';

@@ -59,6 +59,21 @@
                     <button class="btn btn-xs btn-yellow" >密码重置</button>
                  </a>
                 </span>
+                <span style="width:30px;">
+                 <a href="#" onclick="resetPwd(${data.userId});">
+                    <button class="btn btn-xs btn-yellow" >冻结</button>
+                 </a>
+                </span>
+                <span style="width:30px;">
+                 <a href="#" onclick="resetPwd(${data.userId});">
+                    <button class="btn btn-xs btn-yellow" >删除</button>
+                 </a>
+                </span>
+                <span style="width:30px;">
+                 <a href="#" onclick="resetPwd(${data.userId});">
+                    <button class="btn btn-xs btn-yellow" >权限配置</button>
+                 </a>
+                </span>
             </td>
         </tr>
         </#list>

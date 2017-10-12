@@ -18,4 +18,6 @@ public interface TBResourcesDOMapper {
     List<TBResourcesDO> selectByUserId(Integer userId);
     
     List<TBResourcesDO> selectAllActive();
+
+    List<TBResourcesDO> queryResourceByParentId(Integer parentId);
 }

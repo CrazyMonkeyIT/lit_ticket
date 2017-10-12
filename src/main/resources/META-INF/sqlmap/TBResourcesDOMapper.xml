@@ -38,12 +38,21 @@
     <include refid="Base_Column_List" />
     from T_B_RESOURCES
     where active = 1
+    order by order_no asc
   </select>
   
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from T_B_RESOURCES
     where resource_id = #{resourceId,jdbcType=INTEGER}
   </delete>
+
+  <select id="queryResourceByParentId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM T_B_RESOURCES
+    WHERE parent_id = #{parentId} and active = 1
+    ORDER BY order_no asc
+  </select>
 
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
     insert into T_B_RESOURCES

@@ -74,7 +74,7 @@
 <!-- layui提示插件 -->
 <link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
 <script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
-<script src='${request.contextPath}/static/assets/js/jquery-2.0.3.min.js'></script>
+<script src='${request.contextPath}/static/assets/js/jquery-2.1.4.min.js'></script>
 <script src="${request.contextPath}/static/login/js/jquery-ui.min.js" type="text/javascript"></script>
 <script src="${request.contextPath}/static/login/js/stopExecutionOnTimeout.js?t=1" type="text/javascript"></script>
 <script src="${request.contextPath}/static/login/js/Treatment.js" type="text/javascript"></script>

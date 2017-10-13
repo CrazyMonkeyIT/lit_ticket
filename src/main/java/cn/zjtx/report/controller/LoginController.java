@@ -110,5 +110,16 @@ public class LoginController {
 		}
 		return userResources;
 	}
-
+	/**
+	 * 更新菜单选中状态
+	 */
+	@RequestMapping("/updateMenuStatus.html")
+	@ResponseBody
+	public Boolean updateMenuStatus(HttpServletRequest request,Integer oneId,Integer twoId,String oneName,String twoName){
+		request.getSession().setAttribute("SelectOneLevelId",oneId);
+		request.getSession().setAttribute("SelectTwoLevelId",twoId);
+		request.getSession().setAttribute("SelectOneLevelName",oneName);
+		request.getSession().setAttribute("SelectTwoLevelName",twoName);
+		return true;
+	}
 }

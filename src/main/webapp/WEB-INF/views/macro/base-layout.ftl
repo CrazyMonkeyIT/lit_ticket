@@ -5,35 +5,37 @@
 	<meta charset="utf-8" />
 	<title>上海专精特新</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<!-- basic styles -->
-	<link href="${request.contextPath}/static/assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/font-awesome.min.css" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/fonts.googleapis.com.css" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-rtl.min.css" />
+    <!--[if lte IE 9]>
+	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <!-- ace settings handler -->
+    <script src="${request.contextPath}/static/assets/js/ace-extra.min.js"></script>
+    <!--[if lte IE 8]>
+	<script src="${request.contextPath}/static/assets/js/html5shiv.min.js"></script>
+	<script src="${request.contextPath}/static/assets/js/respond.min.js"></script>
+    <![endif]-->
 
-	<!--[if IE 7]>
-	  <link rel="stylesheet" href="${request.contextPath}/static/assets/css/font-awesome-ie7.min.css" />
-	<![endif]-->
-	<!-- page specific plugin styles -->
-	<!-- ace styles -->
-	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace.min.css" />
-	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-rtl.min.css" />
-	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-skins.min.css" />
-
-	<!--[if lte IE 8]>
-	  <link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-ie.min.css" />
-	<![endif]-->
-
-	<!-- inline styles related to this page -->
-
-	<!-- ace settings handler -->
-
-    <script src="${request.contextPath}/static/assets/js/jquery-2.0.3.min.js"></script>
+    <script src="${request.contextPath}/static/assets/js/jquery-2.1.4.min.js"></script>
 
     <!-- layui提示插件 -->
     <link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
     <script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
 </head>
 	
-<body>
+<body class="no-skin">
 	<div class="navbar navbar-default" id="navbar">
 		<script type="text/javascript">
 			try{ace.settings.check('navbar' , 'fixed')}catch(e){}
@@ -43,7 +45,7 @@
 			<div class="navbar-header pull-left">
 				<a href="#" class="navbar-brand">
 					<small>
-						<i class="icon-leaf"></i>
+						<i class="fa fa-leaf"></i>
 						上海专精特新
 					</small>
 				</a><!-- /.brand -->
@@ -53,24 +55,24 @@
 				<ul class="nav ace-nav">
 					<li class="light-blue">
 						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="${request.contextPath}/static/assets/avatars/user.jpg" alt="Jason's Photo">
+                            <img class="nav-user-photo" src="${request.contextPath}/static/assets/images/avatars/user.jpg" alt="Jason's Photo">
 							<span class="user-info">
 								<small>欢迎光临,</small>
 								<@shiro.principal/>
 							</span>
-                            <i class="icon-caret-down"></i>
+                            <i class="ace-icon fa fa-caret-down"></i>
 						</a>
-                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close" style="">
                             <li>
                                 <a href="#">
-                                    <i class="icon-cog"></i>
+                                    <i class="ace-icon fa fa-cog"></i>
                                     设置
                                 </a>
                             </li>
 
                             <li>
-                                <a href="#">
-                                    <i class="icon-user"></i>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
                                     个人资料
                                 </a>
                             </li>
@@ -79,11 +81,12 @@
 
                             <li>
                                 <a href="javascript:logout()">
-                                    <i class="icon-off"></i>
+                                    <i class="ace-icon fa fa-power-off"></i>
                                     退出
                                 </a>
                             </li>
                         </ul>
+
 					</li>
 				</ul><!-- /.ace-nav -->
 			</div><!-- /.navbar-header -->
@@ -101,36 +104,40 @@
 			</a>
 			<div class="sidebar" id="sidebar">
 				<ul class="nav nav-list">
-						<#list menuList as menu>
-							<#if menu.resourceType == 0 && !menu.parentId?exists>
-								<li class="<#if curr!='' && curr == menu.resourceId> active <#elseif curr=='' && menu_index == 0 > active </#if>">
-										<#if menu.hasChild>
-											<a href="#" class="dropdown-toggle">
-												<i class="${menu.cssCls!'icon-desktop'}"></i>
-												<span class="menu-text"> ${menu.resourceName!''} </span>
-												<b class="arrow icon-angle-down"></b>
-											</a>
-											<ul class="submenu">
-												<#list menuList as submenu>
-													<#if submenu.parentId?exists && submenu.parentId = menu.resourceId>
-														<li class="<#if curr!='' && curr == submenu.resourceId> active </#if>">
-															<a href="${request.contextPath}${submenu.resourceUrl!'index.html'}">
-																<i class="${submenu.cssCls!'icon-double-angle-right'}"></i>
-																${submenu.resourceName!''}
-															</a>
-														</li>
-													</#if>
-												</#list>
-											</ul>
-										<#else>
-											<a href="${request.contextPath}${menu.resourceUrl!'index.html'}">
-												<i class="${menu.cssCls!'icon-desktop'}"></i>
-												<span class="menu-text"> ${menu.resourceName!''} </span>
-											</a>
-										</#if>
-								</li>
-							</#if>
-						</#list>
+					<#list menuList as menu>
+						<#if menu.resourceType == 0 && !menu.parentId?exists>
+							<li class="open <#if SelectOneLevelId?? && SelectOneLevelId == menu.resourceId>active</#if>">
+								<#if menu.hasChild>
+									<a href="#" class="dropdown-toggle">
+										<i class="${menu.cssCls!'menu-icon fa fa-desktop'}"></i>
+										<span class="menu-text">
+											${menu.resourceName!''}
+										</span>
+										<b class="arrow fa fa-angle-down"></b>
+									</a>
+									<b class="arrow"></b>
+									<ul class="submenu">
+										<#list menuList as submenu>
+											<#if submenu.parentId?exists && submenu.parentId = menu.resourceId>
+												<li class="<#if SelectTwoLevelId?? && SelectTwoLevelId == submenu.resourceId>active</#if>">
+													<a href="${request.contextPath}${submenu.resourceUrl!'index.html'}" onclick="updateMenuStatus(${menu.resourceId},${submenu.resourceId},'${menu.resourceName}','${submenu.resourceName}')">
+														<i class="menu-icon fa fa-caret-right"></i>
+														${submenu.resourceName!''}
+													</a>
+													<b class="arrow"></b>
+												</li>
+											</#if>
+										</#list>
+									</ul>
+								<#else>
+                                    <a href="${request.contextPath}${menu.resourceUrl!'index.html'}" onclick="updateMenuStatus(${menu.resourceId},null,'${menu.resourceName}',null)">
+                                        <i class="${menu.cssCls!'menu-icon fa fa-desktop'}"></i>
+                                        <span class="menu-text"> ${menu.resourceName!''} </span>
+                                    </a>
+								</#if>
+							</li>
+						</#if>
+					</#list>
 				</ul><!-- /.nav-list -->
 			</div>
 			<div class="main-content">
@@ -141,10 +148,15 @@
 
 					<ul class="breadcrumb">
 						<li>
-							<i class="icon-home home-icon"></i>
-							<a href="#">首页</a>
+							<i class="ace-icon fa fa-home home-icon"></i>
+							<a href="${request.contextPath}/index.html" onclick="updateMenuStatus()">首页</a>
 						</li>
-						<li class="active">控制台</li>
+						<#if SelectOneLevelName??>
+                            <li class="active">${SelectOneLevelName}</li>
+						</#if>
+						<#if SelectTwoLevelName?? && SelectTwoLevelName != ''>
+                            <li class="active">${SelectTwoLevelName}</li>
+						</#if>
 					</ul><!-- .breadcrumb -->
 				</div>
 				<div class="page-content">
@@ -158,31 +170,67 @@
 				</div><!-- /.page-content -->
 			</div><!-- /.main-content -->
 	</div><!-- /.main-container -->
-	<script src="${request.contextPath}/static/assets/js/ace-extra.min.js"></script>
-
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-
-	<!--[if lt IE 9]>
-	<script src="${request.contextPath}/static/assets/js/html5shiv.js"></script>
-	<script src="${request.contextPath}/static/assets/js/respond.min.js"></script>
-	<![endif]-->
-	<!-- basic scripts -->
 	<script src="${request.contextPath}/static/assets/js/bootstrap.min.js"></script>
-	<script src="${request.contextPath}/static/assets/js/typeahead-bs2.min.js"></script>
-	<!-- page specific plugin scripts -->
-	<!--[if lte IE 8]>
-	  <script src="${request.contextPath}/static/assets/js/excanvas.min.js"></script>
-	<![endif]-->
 	<!-- ace scripts -->
 	<script src="${request.contextPath}/static/assets/js/ace-elements.min.js"></script>
 	<script src="${request.contextPath}/static/assets/js/ace.min.js"></script>
-	<!-- inline scripts related to this page -->
-
 	<script>
-        function logout(){
-            window.location.href='${request.contextPath}/logout.html';
-        }
+	/**
+	 * 登出
+	 */
+	function logout(){
+		window.location.href='${request.contextPath}/logout.html';
+	}
+
+    /**
+	 * 更新后端session中的菜单选中状态
+     */
+    function updateMenuStatus(oneId,twoId,oneName,twoName){
+        $.ajax({
+            url : '${request.getContextPath()}/updateMenuStatus.html',
+            type : 'post',
+            data : {
+                "oneId":oneId,
+				"twoId":twoId,
+				"oneName":oneName,
+				"twoName":twoName
+            },
+            success : function(result) {
+
+            }
+        });
+	}
+
+    /**
+	 * 系统提示
+     * @param txt
+     */
+    window.alert = function(txt)
+    {
+        layui.use('layer', function(){
+            layer.msg(txt);
+        });
+    }
+    /**
+     * 加载中
+     */
+    function loading_begin(){
+        layui.use('layer', function(){
+			var index = layer.load(1, {
+				shade: [0.3,'#fff'] //0.1透明度的白色背景
+			});
+        });
+    }
+    /**
+     * 隐藏加载中
+     */
+    function loading_end(){
+        layui.use('layer', function(){
+            layer.closeAll('loading');
+        });
+    }
 	</script>
+
 </body>
 </html>
 </#macro>

@@ -8,7 +8,7 @@
 			<div class="panel-heading">系统资源列表</div>
 			<div class="panel-body">
                 <div style="margin-left:12px;">
-                    <a href="#EditModal" role="button" id="addBtn" data-toggle="modal" class="btn btn-sm btn-primary">
+                    <a href="#EditModal" role="button" id="addBtn" data-toggle="modal" class="btn btn-white btn-default btn-round">
                         <i class="glyphicon glyphicon-plus"></i>新增资源
                     </a>
                 </div>

@@ -7,7 +7,15 @@ public interface LoginUserService {
 
 	public TBLoginUserDO selectByLoginName(String loginName);
 
-	public void insertOrUpdate(TBLoginUserDO loginUser);
+	public boolean insertOrUpdate(TBLoginUserDO loginUser);
 
 	public PageInfo<TBLoginUserDO> selectUserList(Integer userId, String userName, String pageIndex, String pageSize);
+
+	public boolean resetUserPwd(Integer userId);
+
+	public boolean updateUserStatus(Integer userId,Integer status);
+
+	public boolean deleteUser(Integer userId);
+
+	public boolean updateUserPower(Integer userId,String json);
 }

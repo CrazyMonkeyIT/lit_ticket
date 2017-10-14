@@ -33,10 +33,12 @@
     <!-- layui提示插件 -->
     <link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
     <script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
+	<!-- 自定义confirm -->
+    <script src="${request.contextPath}/static/assets/Ewin.js" type="text/javascript"></script>
 </head>
 	
 <body class="no-skin">
-	<div class="navbar navbar-default" id="navbar">
+	<div class="navbar navbar-default" id="navbar" style="background: #2C6AA0;">
 		<script type="text/javascript">
 			try{ace.settings.check('navbar' , 'fixed')}catch(e){}
 		</script>

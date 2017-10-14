@@ -22,6 +22,10 @@
     delete from T_B_USER_RESOURCE
     where user_resource_id = #{userResourceId,jdbcType=INTEGER}
   </delete>
+  <!-- 删除用户的资源 -->
+  <update id="deleteByUserId">
+    update T_B_USER_RESOURCE set active = 0 where user_id = #{userId}
+  </update>
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBUserResourceDO" >
     insert into T_B_USER_RESOURCE
     <trim prefix="(" suffix=")" suffixOverrides="," >

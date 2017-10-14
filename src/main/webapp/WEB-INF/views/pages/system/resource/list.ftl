@@ -1,30 +1,39 @@
 <@ui.layout >
-<link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
 <!-- zTree -->
+<link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
 <script src="${request.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
 <div class="row">
-	<div class="col-xs-3">
-		<div class="panel panel-default">
-			<div class="panel-heading">系统资源列表</div>
-			<div class="panel-body">
-                <div style="margin-left:12px;">
-                    <a href="#EditModal" role="button" id="addBtn" data-toggle="modal" class="btn btn-white btn-default btn-round">
-                        <i class="glyphicon glyphicon-plus"></i>新增资源
+    <div class="col-xs-4" ></div>
+	<div class="col-xs-4" >
+        <div class="widget-box" >
+            <div class="widget-header widget-header-flat">
+                <h4 class="widget-title">系统资源列表</h4>
+                <div class="widget-toolbar">
+                    <a href="javascript:showAddModal()" id="addBtn" class="btn btn-white btn-info">
+                        &nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;新增资源&nbsp;
                     </a>
                 </div>
-				<div class="ztreeULBackground left">
-		            <ul id="treeUL" class="ztree"></ul>
-		        </div>
-			</div>
-		</div>
+            </div>
+            <div class="widget-body">
+                <div class="widget-main">
+                    <div style="margin-left:12px;">
+
+                    </div>
+                    <div class="ztreeULBackground left">
+                        <ul id="treeUL" class="ztree"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
 	</div>
+    <div class="col-xs-4" ></div>
     <!--  编辑资源信息begin   -->
     <div aria-hidden="false" id="EditModal" aria-labelledby="myModalLabel" data-backdrop="static" role="dialog" tabindex="-1" class="modal fade in exam_newbox" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" style="font-weight:bold;">编辑资源信息</h4>
+                    <h4 class="blue"><i class="ace-icon fa fa-pencil-square-o"></i>编辑资源信息</h4>
                 </div>
                 <form id="EditForm" action="${request.getContextPath()}/system/resource/addResource.html" method="post">
                     <!-- 资源ID -->
@@ -33,7 +42,7 @@
                     <div class="modal-body role_over">
                         <div class="form-horizontal">
                             <div class="form-group ">
-                                <label class="col-sm-3 control-label">父菜单:</label>
+                                <label class="col-sm-3 control-label">父菜单</label>
                                 <div class="col-sm-9">
                                     <select name="parentId" style="width: 300px; ">
                                     <option value="">无</option>
@@ -51,39 +60,25 @@
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="col-sm-3 control-label">资源名称:</label>
+                                <label class="col-sm-3 control-label">资源名称</label>
                                 <div class="col-sm-9">
                                     <input class="col-sm-8" name="resourceName" type="text" style="width: 300px;" />
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="col-sm-3 control-label">资源代码:</label>
-                                <div class="col-sm-9">
-                                    <input class="col-sm-9" name="resourceCode" type="text" style="width: 300px; " />
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label class="col-sm-3 control-label">资源URL:</label>
+                                <label class="col-sm-3 control-label">资源URL</label>
                                 <div class="col-sm-9">
                                     <input class="col-sm-9" name="resourceUrl" type="text" style="width: 300px; " />
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="col-sm-3 control-label">图标:</label>
+                                <label class="col-sm-3 control-label">资源代码</label>
                                 <div class="col-sm-9">
-                                    <input class="col-sm-9" name="cssCls" type="text" style="width:300px;" ></input>
+                                    <input class="col-sm-9" name="resourceCode" type="text" style="width: 300px; " />
                                 </div>
                             </div>
                             <div class="form-group ">
-                                <label class="col-sm-3 control-label">描述:</label>
-                                <div class="col-sm-9">
-                                    <textarea name="resourceDesc" style="width:300px; height:100px;resize:none" ></textarea>
-                                </div>
-                            </div>
-
-                            <div class="form-group ">
-                                <label class="col-sm-3 control-label">资源类型:</label>
+                                <label class="col-sm-3 control-label">资源类型</label>
                                 <div class="col-sm-9">
                                     <select name="resourceType" class="col-sm-9" style="width: 300px; ">
                                         <option value="0">菜单</option>
@@ -91,11 +86,32 @@
                                     </select>
                                 </div>
                             </div>
+
+                            <div class="form-group ">
+                                <label class="col-sm-3 control-label">图标</label>
+                                <div class="col-sm-9">
+                                    <input class="col-sm-9" name="cssCls" type="text" style="width:300px;" ></input>
+                                </div>
+                            </div>
+                            <div class="form-group ">
+                                <label class="col-sm-3 control-label">描述</label>
+                                <div class="col-sm-9">
+                                    <textarea name="resourceDesc" style="width:300px; height:100px;resize:none" ></textarea>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="modal-footer" style="clear:both;">
-                        <button class="btn btn-sm btn-primary icon-ok" type="button"  onclick="addResource();">保存</button>
-                        <button class="btn btn-sm icon-remove" type="button" data-dismiss="modal">取消</button>
+                        <button class="btn btn-white btn-info btn-bold" onclick="addResource();">
+                            <i class="ace-icon glyphicon glyphicon-ok blue"></i>
+                            保存
+                        </button>
+                        <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                            <i class="ace-icon glyphicon glyphicon-remove blue"></i>
+                            取消
+                        </button>
                     </div>
                 </form>
                 <script>
@@ -113,14 +129,20 @@
             <div class="modal-content"  >
                 <div class="modal-header">
                     <a class="close" data-dismiss="modal">×</a>
-                    <h5 style="font-weight:bold;">系统提示</h5>
+                    <h4 class="blue">系统提示</h4>
                 </div>
                 <div class="modal-body">
                     确认删除吗？
                 </div>
                 <div class="modal-footer">
-                    <a onclick="deleteResource()" class="btn btn-success btn-sm icon-ok">确定</a>
-                    <a href="#" class="btn btn-sm icon-remove" data-dismiss="modal">取消</a>
+                    <button onclick="deleteResource()" class="btn btn-white btn-info btn-bold">
+                        <i class="ace-icon glyphicon glyphicon-ok blue"></i>
+                        确定
+                    </button>
+                    <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                        <i class="ace-icon glyphicon glyphicon-remove blue"></i>
+                        取消
+                    </button>
                 </div>
             </div>
         </div>
@@ -160,7 +182,7 @@
     var setting = {
         view: {
             dblClickExpand: false,
-            showLine: false,
+            showLine: true,
             selectedMulti: false,
             addHoverDom: addHoverDom,
             removeHoverDom: removeHoverDom
@@ -192,7 +214,6 @@
     var upNodes;
     var downNodes;
     function addHoverDom(treeId, treeNode) {
-        console.log(treeNode);
         if ($("#diyBtn_"+treeNode.id).length>0) return;
         var aObj = $("#" + treeNode.tId + "_a");
         var editStr = "<span id='diyBtn_space_" +treeNode.id+ "' >&nbsp;</span><span class='button icon1' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'></span><span class='button icon2' id='diyBtn1_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'></span>";
@@ -392,6 +413,7 @@
                 'resourceId' : resourceId
             },
             success : function(data) {
+                clearForm();
                 $("input[name='resourceId']").val(data.resourceId);
                 $("select[name='parentId']").val(data.parentId);
                 $("input[name='resourceName']").val(data.resourceName);
@@ -424,6 +446,20 @@
         });
     }
 
+    /**
+     * 清空表单
+     */
+    function clearForm(){
+        $("#EditForm")[0].reset();
+    }
+
+    /**
+     * 显示新增
+     */
+    function showAddModal(){
+        clearForm();
+        $("#EditModal").modal("show");
+    }
 </script>
 
 </@ui.layout>

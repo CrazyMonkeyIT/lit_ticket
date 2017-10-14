@@ -72,7 +72,7 @@ public class ResourceController extends BaseController {
 			for (TBResourcesDO t : list) {
 				Map<String,Object> map = new HashMap<String, Object>();
 				map.put("id", t.getResourceId());
-				map.put("pId", t.getParentId().intValue());
+				map.put("pId", t.getParentId());
 				map.put("name", t.getResourceName());
 				if(t.getParentId().toString().equals("0")){
 					map.put("open", "true");
@@ -94,7 +94,7 @@ public class ResourceController extends BaseController {
 
 
 	/**
-	 * 获取资源信息
+	 * 获取一条资源信息
 	 * @param resourceId
 	 * @return
 	 */

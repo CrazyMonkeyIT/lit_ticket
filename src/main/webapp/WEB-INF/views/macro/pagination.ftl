@@ -39,7 +39,7 @@
             <li ><a  href="javascript:void(0);" > ${page.pageNum}/${page.pages} 页</a></li>
             <li style="">
                 <input style="width:30px;height:28px;margin-left:10px;margin-top:2px;" id="gotoNum"  onkeyup="value=value.replace(/\D/ig,'')" maxlength="4" />
-                <button type="button" class="btn btn-link btn-sm" onclick="${callFunName}($('#gotoNum').val())">跳　转</button>
+                <button type="button" class="btn btn-link " onclick="${callFunName}($('#gotoNum').val())">跳　转</button>
             </li>
         </ul>
     </div>

@@ -13,5 +13,5 @@ public interface TBUserResourceDOMapper {
 
     int updateByPrimaryKeySelective(TBUserResourceDO record);
 
-
+    int deleteByUserId(Integer userId);
 }

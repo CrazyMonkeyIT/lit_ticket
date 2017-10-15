@@ -104,14 +104,14 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="clear:both;">
-                        <button class="btn btn-white btn-info btn-bold" onclick="addResource();">
+                        <a class="btn btn-white btn-info btn-bold" onclick="addResource();">
                             <i class="ace-icon glyphicon glyphicon-ok blue"></i>
                             保存
-                        </button>
-                        <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                        </a>
+                        <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
                             <i class="ace-icon glyphicon glyphicon-remove blue"></i>
                             取消
-                        </button>
+                        </a>
                     </div>
                 </form>
                 <script>
@@ -135,14 +135,14 @@
                     确认删除吗？
                 </div>
                 <div class="modal-footer">
-                    <button onclick="deleteResource()" class="btn btn-white btn-info btn-bold">
+                    <a onclick="deleteResource()" class="btn btn-white btn-info btn-bold">
                         <i class="ace-icon glyphicon glyphicon-ok blue"></i>
                         确定
-                    </button>
-                    <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                    </a>
+                    <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
                         <i class="ace-icon glyphicon glyphicon-remove blue"></i>
                         取消
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -451,6 +451,7 @@
      */
     function clearForm(){
         $("#EditForm")[0].reset();
+        $("#EditForm").find("input[name='resourceId']").val("");
     }
 
     /**

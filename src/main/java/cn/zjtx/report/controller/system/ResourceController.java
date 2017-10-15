@@ -74,7 +74,7 @@ public class ResourceController extends BaseController {
 				map.put("id", t.getResourceId());
 				map.put("pId", t.getParentId());
 				map.put("name", t.getResourceName());
-				if(t.getParentId().toString().equals("0")){
+				if("0".equals(t.getParentId().toString())){
 					map.put("open", "true");
 				}
 				mapList.add(map);

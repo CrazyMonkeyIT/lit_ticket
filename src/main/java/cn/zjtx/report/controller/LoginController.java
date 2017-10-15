@@ -68,7 +68,7 @@ public class LoginController {
 			result.setMsg("account_lock");
 			return result;
 		} catch (AuthenticationException ae) {
-			if(ae.getMessage().equals("account_invalid")){
+			if("account_invalid".equals(ae.getMessage())){
 				result.setMsg("account_invalid");
 				return result;
 			}
@@ -85,8 +85,14 @@ public class LoginController {
 		loginUser.setLastLoginTime(updateTime);
         loginUser.setUpdateTime(updateTime);
         loginUserService.insertOrUpdate(loginUser);
-        
-        List<TBResourcesDO> userResources = resourcesService.selectByUserId(loginUser.getUserId());
+
+        //如果当前用户没有父账户，那么就是顶级账户，顶级账户会加载所有资源
+		List<TBResourcesDO> userResources = null;
+		if(loginUser.getParentId() != null) {
+			userResources = resourcesService.selectByUserId(loginUser.getUserId());
+		}else{
+			userResources = resourcesService.selectAll();
+		}
         userResources = resourcesOper(userResources);
         if(userResources.size() == 0){
         	result.setMsg("no_permission");
@@ -102,7 +108,7 @@ public class LoginController {
 		for (TBResourcesDO re : userResources) {
 			if(re.getParentId() != null && re.getParentId() != 0){
 				for (TBResourcesDO res : userResources) {
-					if(res.getResourceId() == re.getParentId()){
+					if(res.getResourceId().equals(re.getParentId())){
 						res.setHasChild(true);
 					}
 				}

@@ -1,5 +1,7 @@
 package cn.zjtx.report.controller.system;
 
+import cn.zjtx.report.base.util.DateUtil;
+import cn.zjtx.report.base.util.StringUtil;
 import cn.zjtx.report.controller.BaseController;
 import cn.zjtx.report.entity.TBLoginUserDO;
 import cn.zjtx.report.entity.TBResourcesDO;
@@ -55,7 +57,7 @@ public class UserController extends BaseController{
      */
     @RequestMapping("/updateUser.html")
     @ResponseBody
-    public Map<String,Object> updateUser(TBLoginUserDO user){
+    public Map<String,Object> updateUser(TBLoginUserDO user,String loginInvalidDate){
         Map<String,Object> resultMap = new HashMap<String,Object>();
         resultMap.put("result",false);
         try {
@@ -65,6 +67,7 @@ public class UserController extends BaseController{
                 return resultMap;
             }
             user.setParentId(getCurrentUser().getUserId());
+            user.setLoginInvalid(StringUtil.isNotBlank(loginInvalidDate)?DateUtil.StrToTimestamp(loginInvalidDate+" 23:59:59","yyyy-MM-dd HH:mm:ss"):null);
             boolean result = loginUserService.insertOrUpdate(user);
             resultMap.put("result",result);
         }catch(Exception e){

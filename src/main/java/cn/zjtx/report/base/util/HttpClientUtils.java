@@ -59,9 +59,9 @@ import sun.misc.BASE64Encoder;
 @SuppressWarnings("restriction")
 public class HttpClientUtils {
 
-    public static final int connTimeout=10000;
-    public static final int readTimeout=10000;
-    public static final String charset="UTF-8";
+    public static final int CONN_TIME_OUT =10000;
+    public static final int READ_TIME_OUT=10000;
+    public static final String CHARSET="UTF-8";
     private static HttpClient client = null;
     
     static {
@@ -80,25 +80,25 @@ public class HttpClientUtils {
      * @throws Exception
      */
     public static String postJsonParameters(String url, String parameterStr) throws ConnectTimeoutException, SocketTimeoutException, Exception{
-        return post(url,parameterStr,"application/json",charset,connTimeout,readTimeout);
+        return post(url,parameterStr,"application/json",CHARSET,CONN_TIME_OUT,READ_TIME_OUT);
     }
     
     
     public static String postParameters(String url, String parameterStr) throws ConnectTimeoutException, SocketTimeoutException, Exception{
-        return post(url,parameterStr,"application/x-www-form-urlencoded",charset,connTimeout,readTimeout);
+        return post(url,parameterStr,"application/x-www-form-urlencoded",CHARSET,CONN_TIME_OUT,READ_TIME_OUT);
     }
     
     public static String postParameters(String url) throws ConnectTimeoutException, SocketTimeoutException, Exception{
-        return post(url,null,"application/x-www-form-urlencoded",charset,connTimeout,readTimeout);
+        return post(url,null,"application/x-www-form-urlencoded",CHARSET,CONN_TIME_OUT,READ_TIME_OUT);
     }
     
-    public static String postParameters(String url, String parameterStr,String charset, Integer connTimeout, Integer readTimeout) throws ConnectTimeoutException, SocketTimeoutException, Exception{
-        return post(url,parameterStr,"application/x-www-form-urlencoded",charset,connTimeout,readTimeout);
+    public static String postParameters(String url, String parameterStr,String charSet, Integer connTimeout, Integer readTimeout) throws ConnectTimeoutException, SocketTimeoutException, Exception{
+        return post(url,parameterStr,"application/x-www-form-urlencoded",charSet,connTimeout,readTimeout);
     }
     
     public static String postParameters(String url, Map<String, String> params) throws ConnectTimeoutException,  
      SocketTimeoutException, Exception {
-         return postForm(url, params, null, connTimeout, readTimeout);
+         return postForm(url, params, null, CONN_TIME_OUT, READ_TIME_OUT);
      }
     
     public static String postParameters(String url, Map<String, String> params, Integer connTimeout,Integer readTimeout) throws ConnectTimeoutException,  
@@ -107,11 +107,11 @@ public class HttpClientUtils {
      }
       
     public static String get(String url) throws Exception {  
-        return get(url, charset, null, null);  
+        return get(url, CHARSET, null, null);
     }
     
-    public static String get(String url, String charset) throws Exception {  
-        return get(url, charset, connTimeout, readTimeout);  
+    public static String get(String url, String charSet) throws Exception {
+        return get(url, charSet, CONN_TIME_OUT, READ_TIME_OUT);
     } 
 
     /** 
@@ -128,7 +128,7 @@ public class HttpClientUtils {
      * @throws SocketTimeoutException  响应超时 
      * @throws Exception 
      */  
-    public static String post(String url, String body, String mimeType,String charset, Integer connTimeout, Integer readTimeout) 
+    public static String post(String url, String body, String mimeType,String charset, Integer connTimeout, Integer readTimeout)
             throws ConnectTimeoutException, SocketTimeoutException, Exception {
         HttpClient client = null;
         HttpPost post = new HttpPost(url);
@@ -313,10 +313,11 @@ public class HttpClientUtils {
     private static CloseableHttpClient createSSLInsecureClient() throws GeneralSecurityException {
         try {
             SSLContext sslContext = new SSLContextBuilder().loadTrustMaterial(null, new TrustStrategy() {
-                        public boolean isTrusted(X509Certificate[] chain,String authType) throws CertificateException {
+                @Override
+                public boolean isTrusted(X509Certificate[] chain,String authType) throws CertificateException {
                             return true;
                         }
-                    }).build();
+                }).build();
             
             SSLConnectionSocketFactory sslsf = new SSLConnectionSocketFactory(sslContext, new X509HostnameVerifier() {
 
@@ -396,19 +397,19 @@ public class HttpClientUtils {
      * @throws ClientProtocolException
      * @throws IOException
      */
-    public static String getImgBase64Code(String url_str,String path) throws ClientProtocolException, IOException{
+    public static String getImgBase64Code(String urlStr,String path) throws ClientProtocolException, IOException{
     	HttpURLConnection httpUrl = null;
     	URL url = null;
 		InputStream input = null; 
 		byte[] data = null;
 		String result = "";
 		try{
-		    if(url_str == null || url_str == "" || "".equals(url_str)){
+		    if(urlStr == null || urlStr == "" || "".equals(urlStr)){
 			    	return "";
 		    }
 			  //在根目录创建一个临时文件
 		    File file = new File(path+File.separator+System.currentTimeMillis()+".jpg");
-			url = new URL(url_str);
+			url = new URL(urlStr);
 			httpUrl = (HttpURLConnection) url.openConnection();
 			httpUrl.connect();
 			input = httpUrl.getInputStream();	
@@ -426,7 +427,8 @@ public class HttpClientUtils {
 			httpUrl.disconnect();
 			// 对字节数组Base64编码
 			BASE64Encoder encoder = new BASE64Encoder();
-			result =  encoder.encode(data);// 返回Base64编码过的字节数组字符串
+            // 返回Base64编码过的字节数组字符串
+			result =  encoder.encode(data);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

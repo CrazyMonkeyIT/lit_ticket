@@ -13,16 +13,16 @@ import cn.zjtx.report.service.base.IndustrySasacService;
 public class IndustrySasacServiceImpl implements IndustrySasacService {
 
 	@Autowired
-	private IndustrySasacDOMapper IndustrySasacDOMapper;
+	private IndustrySasacDOMapper industrySasacDOMapper;
 	
 	@Override
 	public List<IndustrySasacDO> selectAll() {
-		return IndustrySasacDOMapper.selectAll();
+		return industrySasacDOMapper.selectAll();
 	}
 
 	@Override
 	public void saveIndustry(IndustrySasacDO industry) {
-		IndustrySasacDOMapper.insert(industry);
+		industrySasacDOMapper.insert(industry);
 	}
 
 }

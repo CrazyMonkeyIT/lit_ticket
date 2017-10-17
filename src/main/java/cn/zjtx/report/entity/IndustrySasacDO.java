@@ -14,13 +14,14 @@ public class IndustrySasacDO {
 
     private BigDecimal computingCoefficient;
 
+    private Integer orderNo;
+
     private Integer active;
 
     private Date createTime;
 
     private Date updateTime;
 
-    private Integer orderNo;
 
     public Integer getId() {
         return id;

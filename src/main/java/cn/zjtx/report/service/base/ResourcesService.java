@@ -16,5 +16,7 @@ public interface ResourcesService {
 
 	boolean deleteResource(Integer resourceId);
 
-	boolean updateResourcePosition(TBResourcesDO resource,String upName,Integer upId,Integer uppId,Integer upOrder);
+	boolean updateResourcePosition(TBResourcesDO resource,Integer upId,Integer upOrder);
+
+	int selectCurrOrderNo(Integer parentId);
 }

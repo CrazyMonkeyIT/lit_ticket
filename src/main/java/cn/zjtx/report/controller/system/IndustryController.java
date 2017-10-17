@@ -62,7 +62,7 @@ public class IndustryController {
 	public BaseResult saveIndustry(IndustrySasacDO industry){
 		BaseResult result = new BaseResult(true, "");
 		try {
-			industrySasacService.saveIndustry(industry);
+//			industrySasacService.saveIndustry(industry);
 		} catch (Exception e) {
 			result.setSuccess(false);
 			result.setMsg("保存失败");

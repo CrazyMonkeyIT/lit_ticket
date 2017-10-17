@@ -1,4 +1,6 @@
 <@ui.layout >
+<!-- magic-check -->
+<link rel="stylesheet" href="${request.contextPath}/static/magic-check/magic-check.css" type="text/css">
 <style>
 .filed-name{
     text-align: right;
@@ -44,8 +46,22 @@
                         <td class="filed-name"  valign="top">年份：</td>
                         <td class="filed-value" valign="top">
                             <div class="well"  style="height:100px;width:150px;padding:5px;margin:0px;overflow-y:auto; ">
-                                <div><input type="checkbox" />&nbsp;2017年</div>
-                                <div><input type="checkbox" />&nbsp;2016年</div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="year-2017">
+                                    <label for="year-2017">2017年</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="year-2016">
+                                    <label for="year-2016">2016年</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="year-2015">
+                                    <label for="year-2015">2015年</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="year-2014">
+                                    <label for="year-2014">2014年</label>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -53,10 +69,22 @@
                         <td class="filed-name"  valign="top">时间：</td>
                         <td class="filed-value" valign="top">
                             <div class="well"  style="height:200px;width:150px;padding:5px;margin:0px;overflow-y:auto;">
-                                <div><input type="checkbox" />&nbsp;年终</div>
-                                <div><input type="checkbox" />&nbsp;2016年</div>
-                                <div><input type="checkbox" />&nbsp;2015年</div>
-                                <div><input type="checkbox" />&nbsp;2014年</div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="time-0">
+                                    <label for="time-0">年终</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="time-2016">
+                                    <label for="time-2016">2016年</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="time-2015">
+                                    <label for="time-2015">2015年</label>
+                                </div>
+                                <div class="opt">
+                                    <input class="magic-checkbox" type="checkbox" name="layout" id="time-2014">
+                                    <label for="time-2014">2014年</label>
+                                </div>
                             </div>
                         </td>
                     </tr>
@@ -83,7 +111,7 @@
                         <td class="filed-name" valign="top"></td>
                         <td class="filed-value">
                             分析时间<br/>
-                            <input type="text" style="width:150px;" readonly/>
+                            <div style="height:28px;margin:0px;" class="green"><b>2017年度报告</b></div>
                         </td>
                     </tr>
                     <tr>
@@ -108,9 +136,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="filed-value" colspan="2" style="padding-left:75px;">
-                            <input type="checkbox" />包含表外项目&nbsp;
-                            <div class="btn-group">
+                        <td class="filed-value" colspan="2" style="padding-left:58px;">
+                            <div class="opt" style="float:left;height:34px;padding-top:8px;">
+                                <input class="magic-checkbox" type="checkbox" name="layout" id="container">
+                                <label for="container">包含表外项目</label>
+                            </div>
+                            <div class="btn-group" style="float:left;">
                                 <button data-toggle="dropdown" class="btn btn-primary btn-white dropdown-toggle" aria-expanded="false">
                                     生成报告
                                     <i class="ace-icon fa fa-angle-down icon-on-right"></i>

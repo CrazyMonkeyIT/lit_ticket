@@ -164,11 +164,11 @@ public class ResourceController extends BaseController {
 	 */
 	@RequestMapping(value="/changeResource.html",method=RequestMethod.POST)
 	@ResponseBody
-	public boolean changeResource(TBResourcesDO resource,String upName,Integer upId,Integer uppId,Integer upOrder){
+	public boolean changeResource(TBResourcesDO resource,Integer upId,Integer upOrder){
 		boolean result = false;
 		if(!ObjectUtil.isNullOrEmpty(resource)){
 			try {
-				result = resourcesService.updateResourcePosition(resource, upName, upId, uppId, upOrder);
+				result = resourcesService.updateResourcePosition(resource, upId, upOrder);
 			} catch (Exception e) {
 				logger.error("菜单位置变更异常",e);
 			}

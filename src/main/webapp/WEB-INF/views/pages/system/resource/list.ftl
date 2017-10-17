@@ -242,13 +242,9 @@
                     url : '${request.getContextPath()}/system/resource/changeResource.html',
                     type : 'post',
                     data : {
-                        'upName'    : node.name,
-                        'uppId' : node.pId,
                         'upOrder' : node.order,
                         'upId' : node.id,
                         'resourceId':treeNode.id,
-                        'name':treeNode.name,
-                        'parentId':treeNode.pId,
                         'orderNo':treeNode.order
                     },
                     success : function(result) {
@@ -282,14 +278,9 @@
                     url : '${request.getContextPath()}/system/resource/changeResource.html',
                     type : 'post',
                     data : {
-                        'upName'    : node.name,
-                        'uppId' : node.pId,
                         'upOrder' : node.order,
                         'upId' : node.id,
-
                         'resourceId':treeNode.id,
-                        'name':treeNode.name,
-                        'parentId':treeNode.pId,
                         'orderNo':treeNode.order
                     },
                     success : function(result) {

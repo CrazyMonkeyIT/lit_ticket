@@ -9,5 +9,9 @@ public interface IndustrySasacService {
 	
 	List<IndustrySasacDO> selectAll();
 	
-	void saveIndustry(IndustrySasacDO industry);
+	boolean insertOrUpdate(IndustrySasacDO record);
+
+	boolean deleteByPrimaryKey(Integer id);
+
+	boolean updatePosition();
 }

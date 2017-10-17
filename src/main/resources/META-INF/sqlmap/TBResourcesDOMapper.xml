@@ -53,7 +53,16 @@
     WHERE parent_id = #{parentId} and active = 1
     ORDER BY order_no asc
   </select>
-
+  <select id="selectLasrOrderNo" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select max(order_no) from T_B_RESOURCES
+    <if test="parentId != null">
+      where parent_id = #{parentId,jdbcType=INTEGER}
+    </if>
+    <if test="parentId == null">
+      where parent_id is NULL
+    </if>
+    order by order_no desc
+  </select>
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >
     insert into T_B_RESOURCES
     <trim prefix="(" suffix=")" suffixOverrides="," >

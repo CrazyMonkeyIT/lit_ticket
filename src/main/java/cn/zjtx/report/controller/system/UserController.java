@@ -150,7 +150,7 @@ public class UserController extends BaseController{
                 map.put("id", t.getResourceId());
                 map.put("pId", t.getParentId());
                 map.put("name", t.getResourceName());
-                if(t.getParentId() == null){
+                if(t.getParentId() == 0){
                     map.put("open", "true");
                 }
                 mapList.add(map);

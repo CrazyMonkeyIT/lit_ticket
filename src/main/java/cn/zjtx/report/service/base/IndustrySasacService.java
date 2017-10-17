@@ -8,10 +8,14 @@ public interface IndustrySasacService {
 
 	
 	List<IndustrySasacDO> selectAll();
+
+	IndustrySasacDO selectByPrimaryKey(Integer id);
 	
 	boolean insertOrUpdate(IndustrySasacDO record);
 
 	boolean deleteByPrimaryKey(Integer id);
 
-	boolean updatePosition();
+	boolean updatePosition(IndustrySasacDO record, Integer upId, Integer upOrder);
+
+	int selectCurrOrderNo(Integer parentId);
 }

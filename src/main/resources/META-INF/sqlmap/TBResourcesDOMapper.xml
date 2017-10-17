@@ -55,12 +55,7 @@
   </select>
   <select id="selectLasrOrderNo" parameterType="java.lang.Integer" resultType="java.lang.Integer">
     select max(order_no) from T_B_RESOURCES
-    <if test="parentId != null">
-      where parent_id = #{parentId,jdbcType=INTEGER}
-    </if>
-    <if test="parentId == null">
-      where parent_id is NULL
-    </if>
+    where parent_id = #{parentId,jdbcType=INTEGER}
     order by order_no desc
   </select>
   <insert id="insertSelective" parameterType="cn.zjtx.report.entity.TBResourcesDO" >

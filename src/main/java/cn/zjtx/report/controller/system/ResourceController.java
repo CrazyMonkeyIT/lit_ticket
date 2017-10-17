@@ -34,7 +34,7 @@ public class ResourceController extends BaseController {
 	private ResourcesService resourcesService;
 
 	/**
-	 * 获取资源列表
+	 * 资源列表
 	 * @param mv
 	 * @return
 	 */
@@ -49,7 +49,7 @@ public class ResourceController extends BaseController {
 			map.put("pId", res.getParentId());
 			map.put("name", res.getResourceName());
 			map.put("order", res.getOrderNo());
-			if(res.getParentId() == null){
+			if(res.getParentId() == 0){
 				map.put("open", "true");
 			}
 			mapList.add(map);
@@ -59,39 +59,6 @@ public class ResourceController extends BaseController {
 		mv.setViewName("pages/system/resource/list");
 		return mv;
 	}
-	/**
-	 * 获取所有资源
-	 * @return
-	 */
-	@RequestMapping(value="/getAllResource.html",method=RequestMethod.POST)
-	public @ResponseBody List<Map<String,Object>> getAllResource(){
-		try {
-			List<TBResourcesDO> list = resourcesService.selectAll();
-			List<Map<String,Object>> mapList = new ArrayList<Map<String,Object>>();
-			//转换为json格式数据，方便zTree树的实现
-			for (TBResourcesDO t : list) {
-				Map<String,Object> map = new HashMap<String, Object>();
-				map.put("id", t.getResourceId());
-				map.put("pId", t.getParentId());
-				map.put("name", t.getResourceName());
-				if("0".equals(t.getParentId().toString())){
-					map.put("open", "true");
-				}
-				mapList.add(map);
-			}
-			Map<String,Object> root = new HashMap<String, Object>();
-			root.put("id", "0");
-			root.put("pId", "-1");
-			root.put("name", "root");
-			root.put("open", "true");
-			mapList.add(root);
-			return mapList;
-		} catch (Exception e) {
-			logger.error("获取所有资源",e);
-			return null;
-		}
-	}
-
 
 	/**
 	 * 获取一条资源信息
@@ -107,22 +74,6 @@ public class ResourceController extends BaseController {
 			logger.error("获取资源信息异常",e);
 		}
 		return resource;
-	}
-
-	/**
-	 * 修改资源信息
-	 * @param groupId
-	 * @return
-	 */
-	@RequestMapping(value="/editResource.html",method=RequestMethod.POST)
-	public @ResponseBody String editResource(TBResourcesDO resource){
-		try {
-			resourcesService.insertOrUpdate(resource);
-		} catch (Exception e) {
-			logger.error("修改资源信息异常",e);
-			return "false";
-		}
-		return "true";
 	}
 
 	/**
@@ -142,11 +93,11 @@ public class ResourceController extends BaseController {
 		return result;
 	}
 	/**
-	 * 添加资源信息
+	 * 更新资源信息
 	 * @param groupId
 	 * @return
 	 */
-	@RequestMapping(value="/addResource.html",method=RequestMethod.POST)
+	@RequestMapping(value="/editResource.html",method=RequestMethod.POST)
 	public @ResponseBody boolean addResource(TBResourcesDO resource){
 		boolean result = false;
 		try {

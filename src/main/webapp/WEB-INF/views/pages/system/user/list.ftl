@@ -30,7 +30,7 @@
                 </form>
             </div>
                 <table class="table table-striped table-bordered table-hover dataTable no-footer" >
-                    <thead >
+                    <thead class="thin-border-bottom">
                     <tr >
                         <th >序号</th>
                         <th ><i class="normal-icon ace-icon fa fa-user"></i>用户名</th>

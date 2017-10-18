@@ -1,702 +1,310 @@
 <@ui.layout >
-<div class="table-responsive">
-	<div id="sample-table-2_wrapper" class="dataTables_wrapper" role="grid"><div class="row"><div class="col-sm-6"><div id="sample-table-2_length" class="dataTables_length"><label>Display <select size="1" name="sample-table-2_length" aria-controls="sample-table-2"><option value="10" selected="selected">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> records</label></div></div><div class="col-sm-6"><div class="dataTables_filter" id="sample-table-2_filter"><label>Search: <input type="text" aria-controls="sample-table-2"></label></div></div></div><table id="sample-table-2" class="table table-striped table-bordered table-hover dataTable" aria-describedby="sample-table-2_info">
-		<thead>
-			<tr role="row"><th class="center sorting_disabled" role="columnheader" rowspan="1" colspan="1" aria-label="" style="width: 51px;">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" aria-label="Domain: activate to sort column ascending" style="width: 165px;">Domain</th><th class="sorting_desc" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" style="width: 101px;" aria-sort="descending" aria-label="Price: activate to sort column ascending">Price</th><th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" style="width: 111px;" aria-label="Clicks: activate to sort column ascending">Clicks</th><th class="sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" style="width: 169px;" aria-label="
-					
-					Update
-				: activate to sort column ascending">
-					<i class="icon-time bigger-110 hidden-480"></i>
-					Update
-				</th><th class="hidden-480 sorting" role="columnheader" tabindex="0" aria-controls="sample-table-2" rowspan="1" colspan="1" style="width: 159px;" aria-label="Status: activate to sort column ascending">Status</th><th class="sorting_disabled" role="columnheader" rowspan="1" colspan="1" style="width: 152px;" aria-label=""></th></tr>
-		</thead>
-
-		
-	<tbody role="alert" aria-live="polite" aria-relevant="all"><tr class="odd">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">up.com</a>
-				</td>
-				<td class="  sorting_1">$95</td>
-				<td class="hidden-480 ">8,520</td>
-				<td class=" ">Feb 22</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-info arrowed arrowed-righ">Sold</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="even">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">best.com</a>
-				</td>
-				<td class="  sorting_1">$75</td>
-				<td class="hidden-480 ">6,500</td>
-				<td class=" ">Apr 03</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-inverse arrowed-in">Flagged</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="odd">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">max.com</a>
-				</td>
-				<td class="  sorting_1">$60</td>
-				<td class="hidden-480 ">4,400</td>
-				<td class=" ">Mar 11</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-warning">Expiring</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="even">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">sight.com</a>
-				</td>
-				<td class="  sorting_1">$58</td>
-				<td class="hidden-480 ">6,100</td>
-				<td class=" ">Feb 19</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-inverse arrowed-in">Flagged</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="odd">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">pro.com</a>
-				</td>
-				<td class="  sorting_1">$55</td>
-				<td class="hidden-480 ">4,250</td>
-				<td class=" ">Jan 21</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-success">Registered</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="" data-original-title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="" data-original-title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="" data-original-title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="even">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">great.com</a>
-				</td>
-				<td class="  sorting_1">$55</td>
-				<td class="hidden-480 ">6,400</td>
-				<td class=" ">Feb 24</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-success">Registered</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="odd">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">day.com</a>
-				</td>
-				<td class="  sorting_1">$55</td>
-				<td class="hidden-480 ">5,600</td>
-				<td class=" ">Jan 29</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-info arrowed arrowed-righ">Sold</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="even">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">right.com</a>
-				</td>
-				<td class="  sorting_1">$50</td>
-				<td class="hidden-480 ">4,400</td>
-				<td class=" ">Apr 01</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-warning">Expiring</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="odd">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">good.com</a>
-				</td>
-				<td class="  sorting_1">$50</td>
-				<td class="hidden-480 ">6,500</td>
-				<td class=" ">Feb 02</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-inverse arrowed-in">Flagged</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr><tr class="even">
-				<td class="center">
-					<label>
-						<input type="checkbox" class="ace">
-						<span class="lbl"></span>
-					</label>
-				</td>
-
-				<td class="">
-					<a href="#">year.com</a>
-				</td>
-				<td class="  sorting_1">$48</td>
-				<td class="hidden-480 ">3,990</td>
-				<td class=" ">Feb 15</td>
-
-				<td class="hidden-480 ">
-					<span class="label label-sm label-warning">Expiring</span>
-				</td>
-
-				<td class=" ">
-					<div class="visible-md visible-lg hidden-sm hidden-xs action-buttons">
-						<a class="blue" href="#">
-							<i class="icon-zoom-in bigger-130"></i>
-						</a>
-
-						<a class="green" href="#">
-							<i class="icon-pencil bigger-130"></i>
-						</a>
-
-						<a class="red" href="#">
-							<i class="icon-trash bigger-130"></i>
-						</a>
-					</div>
-
-					<div class="visible-xs visible-sm hidden-md hidden-lg">
-						<div class="inline position-relative">
-							<button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
-								<i class="icon-caret-down icon-only bigger-120"></i>
-							</button>
-
-							<ul class="dropdown-menu dropdown-only-icon dropdown-yellow pull-right dropdown-caret dropdown-close">
-								<li>
-									<a href="#" class="tooltip-info" data-rel="tooltip" title="View">
-										<span class="blue">
-											<i class="icon-zoom-in bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
-										<span class="green">
-											<i class="icon-edit bigger-120"></i>
-										</span>
-									</a>
-								</li>
-
-								<li>
-									<a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
-										<span class="red">
-											<i class="icon-trash bigger-120"></i>
-										</span>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</td>
-			</tr></tbody></table><div class="row"><div class="col-sm-6"><div class="dataTables_info" id="sample-table-2_info">Showing 1 to 10 of 23 entries</div></div><div class="col-sm-6"><div class="dataTables_paginate paging_bootstrap"><ul class="pagination"><li class="prev disabled"><a href="#"><i class="icon-double-angle-left"></i></a></li><li class="active"><a href="#">1</a></li><li><a href="#">2</a></li><li><a href="#">3</a></li><li class="next"><a href="#"><i class="icon-double-angle-right"></i></a></li></ul></div></div></div></div>
+<!-- zTree -->
+<link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
+<script src="${request.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
+<div class="col-xs-12">
+        <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+            <div class="row">
+                <form class="form-inline" id="form1" role="form" action="${request.getContextPath()}/customer/list.html" method="post">
+                    <input id="pageIndex" name="pageIndex" value="${page.pageNum}" type="hidden" />
+                    <div class="input-group">
+                        <input type="text" name="custName" value="${custName!}" class="form-control search-query" placeholder="客户名">
+                        <span class="input-group-btn">
+                            <button type="submit" class="btn btn-white btn-info">
+                                <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                                查询
+                            </button>
+                        </span>
+                    </div>
+                    &nbsp;
+                    <a onclick="showAddModal()" class="btn btn-white btn-info">
+                        <i class="glyphicon glyphicon-plus"></i>
+                        创建客户
+                    </a>
+                </form>
+            </div>
+            <table class="table table-striped table-bordered table-hover dataTable no-footer" >
+                <thead class="thin-border-bottom">
+                <tr >
+                    <th >序号</th>
+                    <th >客户名</th>
+                    <th >客户规模</th>
+                    <th >企业属性</th>
+                    <th >国标行业</th>
+                    <th >国资委行业</th>
+                    <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>创建时间</th>
+                    <th ><i class="ace-icon fa fa-wrench"></i>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+					<#if page.list?? && (page.list?size > 0)>
+						<#list page.list as data>
+                        <tr>
+                            <td>${((page.pageNum-1) * 10) + (data_index+1)}</td>
+                            <td>${data.custName!''}</span></td>
+                            <td>${data.custCode!''}</td>
+                            <td>
+								<#if data.custScale == 1>大</#if>
+								<#if data.custScale == 2>中</#if>
+								<#if data.custScale == 3>小</#if>
+								<#if data.custScale == 4>位置</#if>
+								<#if data.custScale == 5>不使用</#if>
+							</td>
+                            <td>
+								<#if data.enterpriseAttribute == 1>国有企业</#if>
+								<#if data.enterpriseAttribute == 2>上市企业</#if>
+								<#if data.enterpriseAttribute == 3>民营大企业</#if>
+								<#if data.enterpriseAttribute == 4>民营中小企业</#if>
+							</td>
+							<td>${data.nationalStandardId!''}</td>
+                            <td>${data.industrySasacId!''}</td>
+                            <td>
+								<#if data.createTime??>${(data.createTime?string('yyyy-MM-dd HH:mm:ss'))}
+                            </td>
+                            <td >
+                                <div class="btn-overlap btn-group">
+                                    <a onclick="showEditModal('${data.id}');" class="btn btn-white btn-primary btn-bold"  data-rel="tooltip" title="" data-original-title="修改" title="修改">
+                                        <i class="fa fa-pencil bigger-110 green" ></i>
+										修改
+                                    </a>
+                                    <a onclick="deleteUser(${data.id})" class="btn btn-white btn-primary btn-bold" data-rel="tooltip" title="" data-original-title="删除" title="删除">
+                                        <i class="fa fa-trash-o bigger-110 red"></i>
+										删除
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+						</#list>
+					<#else>
+                    <tr style="text-align:center;">
+                        <td colspan="6"><h4 class="green">暂无客户</h4></td>
+                    </tr>
+					</#if>
+                </tbody>
+            </table>
+            <div class="row">
+                <!-- 分页begin -->
+				<#if (page.pages>0)>
+					<#import "../../macro/pagination.ftl" as cast/>
+					<@cast.pagination callFunName="submitForm" />
+				</#if>
+                <!-- 分页end -->
+            </div>
+        </div>
 </div>
+<!-- 编辑信息begin -->
+<div id="edit_modal" class="modal fade" style="display: none; " data-backdrop="static" role="dialog" tabindex="-1" class="modal fade in exam_newbox">
+    <div class="modal-dialog">
+        <div class="modal-content"  >
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+                <h4 class="blue"><i class="fa fa-pencil"></i>&nbsp;编辑客户</h4>
+            </div>
+            <div class="modal-body">
+                <form id="editForm" action="${request.getContextPath()}/customer/update.html" method="post">
+                    <div class="form-horizontal">
+                        <!-- ID -->
+                        <input type="hidden" name="id" />
+
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">客户名称</label>
+                            <div class="col-sm-8">
+                                <input name="custName" type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">客户代码</label>
+                            <div class="col-sm-8">
+                                <input name="custCode" type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">客户规模</label>
+                            <div class="col-sm-8">
+                                <select name="custScale">
+									<option value="1">大</option>
+                                    <option value="2">中</option>
+                                    <option value="3">小</option>
+                                    <option value="4">未知</option>
+                                    <option value="5">不使用</option>
+								</select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">企业属性</label>
+                            <div class="col-sm-8">
+                                <select name="enterpriseAttribute">
+                                    <option value="1">国有企业</option>
+                                    <option value="2">上市企业</option>
+                                    <option value="3">民营大企业</option>
+                                    <option value="4">民营中小企业</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">国标行业</label>
+                            <div class="col-sm-8">
+                                <input name="nationalStandardId" type="text"  />
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">国资委行业</label>
+                            <div class="col-sm-8">
+                                <input name="industrySasacId" type="text"  />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <a onclick="update()" class="btn btn-white btn-info btn-bold">
+                    <i class="ace-icon glyphicon glyphicon-ok blue"></i>
+                    保存
+                </a>
+                <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                    <i class="ace-icon glyphicon glyphicon-remove blue"></i>
+                    取消
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 编辑信息end -->
+<script>
+    jQuery(function($) {
+        $('[data-rel=tooltip]').tooltip();
+    });
+    // 分页查询
+    function submitForm(index){
+        $("#pageIndex").val(index);
+        $("#form1").submit();
+    }
+    /**
+     * 清空表单
+     */
+    function clearForm(){
+        $("#editForm")[0].reset();
+        $("#editForm").find("input[name='id']").val("");
+    }
+    /**
+     * 显示新增
+     */
+    function showAddModal(){
+        clearForm();
+        $("#edit_modal").modal("show");
+    }
+
+    /**
+     * 更新信息
+     */
+    function update(){
+        var custName = $("#editForm").find("input[name='custName']").val();
+        if(!custName){
+            alert("客户名称必须填写");
+            $("#editForm").find("input[name='custName']").focus();
+            return false;
+        }
+        $.ajax({
+            url : $("#editForm").attr("action"),
+            type : 'post',
+            data : $("#editForm").serialize(),
+            success : function(data) {
+                if(data.result){
+                    $("#form1").submit();
+                }else{
+                    alert(data.msg);
+                }
+            }
+        });
+    }
+
+    /**
+     * 获取用户信息
+     */
+    function showEditModal(loginName){
+        clearForm();
+        $.ajax({
+            url : basePath+"/system/user/getUserInfo.html",
+            type : 'post',
+            data : {
+                "loginName":loginName
+            },
+            success : function(data) {
+                $("#editForm").find("input[name='userId']").val(data.userId);
+                $("#editForm").find("input[name='userName']").val(data.userName);
+                $("#editForm").find("input[name='loginName']").val(data.loginName);
+                if(!!data.loginInvalid) {
+                    $("#editForm").find("input[name='loginInvalidDate']").val(fmtDate(data.loginInvalid));
+                }
+                $("#edit_modal").modal("show");
+            }
+        });
+    }
+
+    /**
+     * 重置用户密码
+     */
+    function resetUserPwd(userId){
+        Ewin.confirm({ message: "确认要重置该用户的密码吗？<br/><br/>初始密码为：123456" }).on(function () {
+            $.ajax({
+                url: basePath + "/system/user/resetUserPwd.html",
+                type: 'post',
+                data: {
+                    "userId": userId
+                },
+                success: function (data) {
+                    if (data) {
+                        alert("密码重置成功，初始密码为：123456");
+                    } else {
+                        alert("操作失败，系统异常");
+                    }
+                }
+            });
+        });
+    }
+
+    /**
+     * 冻结/解冻
+     */
+    function updateUserStatus(userId,status){
+        $.ajax({
+            url : basePath+"/system/user/updateUserStatus.html",
+            type : 'post',
+            data : {
+                "userId":userId,
+                "status":status
+            },
+            success : function(data) {
+                if(data){
+                    $("#form1").submit();
+                }else{
+                    alert("操作失败，系统异常");
+                }
+            }
+        });
+    }
+
+    /**
+     * 删除用户
+     */
+    function deleteUser(userId){
+        Ewin.confirm({ message: "确认要删除该用户吗？" }).on(function () {
+            $.ajax({
+                url : basePath+"/system/user/deleteUser.html",
+                type : 'post',
+                data : {
+                    "userId":userId
+                },
+                success : function(data) {
+                    if(data){
+                        $("#form1").submit();
+                    }else{
+                        alert("操作失败，系统异常");
+                    }
+                }
+            });
+        });
+    }
+
+</script>
 </@ui.layout>

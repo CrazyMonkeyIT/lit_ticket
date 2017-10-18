@@ -48,7 +48,6 @@ public class UserController extends BaseController{
             logger.error("获取用户列表异常",e);
         }
         modelMap.addAttribute("page",page);
-        modelMap.addAttribute("pageIndex",pageIndex);
         modelMap.addAttribute("userName",userName);
         return "pages/system/user/list";
     }

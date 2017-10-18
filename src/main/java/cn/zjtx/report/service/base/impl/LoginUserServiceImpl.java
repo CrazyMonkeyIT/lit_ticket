@@ -30,8 +30,9 @@ public class LoginUserServiceImpl implements LoginUserService {
 	 */
 	@Override
 	public TBLoginUserDO selectByLoginName(String loginName) {
-		if(StringUtils.isEmpty(loginName))
+		if(StringUtils.isEmpty(loginName)) {
 			return null;
+		}
 		return loginUserDOMapper.selectByLoginName(loginName);
 	}
 
@@ -61,6 +62,7 @@ public class LoginUserServiceImpl implements LoginUserService {
 	 * @param pageSize
 	 * @return
 	 */
+	@Override
 	public PageInfo<TBLoginUserDO> selectUserList(Integer userId, String userName, String page, String size) {
 		page = (page==null || StringUtil.isBlank(page))?"1":page;
 		size = (size==null || StringUtil.isBlank(size))?"10":size;

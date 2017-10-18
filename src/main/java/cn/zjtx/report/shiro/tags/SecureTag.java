@@ -11,6 +11,7 @@ import java.util.Map;
  * <p>Equivalent to {@link org.apache.shiro.web.tags.SecureTag}</p>
  */
 public abstract class SecureTag implements TemplateDirectiveModel {
+    @Override
     public void execute(Environment env, Map params, TemplateModel[] loopVars, TemplateDirectiveBody body) throws TemplateException, IOException {
         verifyParameters(params);
         render(env, params, body);

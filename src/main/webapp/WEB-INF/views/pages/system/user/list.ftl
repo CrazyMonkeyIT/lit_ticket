@@ -2,9 +2,8 @@
 <!-- zTree -->
 <link rel="stylesheet" href="${request.contextPath}/static/ztree/zTreeStyle.css" type="text/css">
 <script src="${request.contextPath}/static/ztree/jquery.ztree.all-3.5.js"></script>
-<script>
-    var basePath  = '${request.getContextPath()}';
-</script>
+<!-- My97 -->
+<script src="${request.contextPath}/static/My97DatePicker/WdatePicker.js"></script>
 <div class="col-xs-12">
     <!-- div.table-responsive -->
 
@@ -33,22 +32,24 @@
                 <table class="table table-striped table-bordered table-hover dataTable no-footer" >
                     <thead >
                     <tr >
-                        <th style="text-align:center">序号</th>
-                        <th style="text-align:center"><i class="normal-icon ace-icon fa fa-user"></i>用户名</th>
-                        <th style="text-align:center">登录名</th>
-                        <th style="text-align:center"><i class="normal-icon ace-icon fa fa-clock-o"></i>最后登录时间</th>
-                        <th style="text-align:center">状态</th>
-                        <th style="text-align:center">操作</th>
+                        <th >序号</th>
+                        <th ><i class="normal-icon ace-icon fa fa-user"></i>用户名</th>
+                        <th >登录名</th>
+                        <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>失效时间</th>
+                        <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>最后登录时间</th>
+                        <th >状态</th>
+                        <th ><i class="ace-icon fa fa-wrench"></i>操作</th>
                     </tr>
                     </thead>
                     <tbody>
                         <#if page.list?? && (page.list?size > 0)>
                             <#list page.list as data>
-                            <tr style="text-align:center;font-size:14px;">
+                            <tr>
                                 <td>${((page.pageNum-1) * 10) + (data_index+1)}</td>
                                 <td><span class="blue">${data.userName!''}</span></td>
                                 <td>${data.loginName!''}</td>
-                                <td><#if data.lastLoginTime??>${(data.lastLoginTime?string("yyyy-MM-dd"))}</#if></td>
+                                <td><#if data.loginInvalid??>${(data.loginInvalid?string('yyyy-MM-dd HH:mm:ss'))}</#if></td>
+                                <td><#if data.lastLoginTime??>${(data.lastLoginTime?string('yyyy-MM-dd HH:mm:ss'))}</#if></td>
                                 <td>
                                     <#if (data.userStatus==1)>
                                         <span class="label label-sm label-success arrowed">正常</span>
@@ -109,7 +110,7 @@
         <div class="modal-content"  >
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
-                <h4 class="blue">编辑用户</h4>
+                <h4 class="blue"><i class="fa fa-pencil"></i>&nbsp;编辑用户</h4>
             </div>
             <div class="modal-body">
                 <form id="editForm" action="${request.getContextPath()}/system/user/updateUser.html" method="post">
@@ -129,33 +130,45 @@
                                 <input name="loginName" type="text"  />
                             </div>
                         </div>
+                        <div class="form-group ">
+                            <label class="col-sm-4 control-label">失效时间</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                    <input type="text" name="loginInvalidDate" onclick="WdatePicker()" style="width: 142px;cursor: pointer;"/>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button onclick="updateUser()" class="btn btn-white btn-info btn-bold">
+                <a onclick="updateUser()" class="btn btn-white btn-info btn-bold">
                     <i class="ace-icon glyphicon glyphicon-ok blue"></i>
                     保存
-                </button>
-                <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                </a>
+                <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
                     <i class="ace-icon glyphicon glyphicon-remove blue"></i>
                     取消
-                </button>
+                </a>
             </div>
         </div>
     </div>
 </div>
 <!-- 编辑用户信息end -->
 <!-- 设置权限begin -->
-<div id="power_modal" class="modal fade" style="display: none; " data-backdrop="static" role="dialog" tabindex="-1" class="modal fade in exam_newbox">
+<div id="power_modal" class="modal fade" style="display: none; " data-backdrop="static" role="dialog" tabindex="-1" class="modal fade in">
     <div class="modal-dialog">
-        <div class="modal-content"  >
+        <div class="modal-content" style="width:400px;margin:0px auto;" >
             <div class="modal-header">
                 <a class="close" data-dismiss="modal">×</a>
-                <h4 class="blue">用户权限设置</h4>
+                <h4 class="blue"><i class="fa fa-list"></i>&nbsp;用户权限设置</h4>
             </div>
             <div class="modal-body">
-                <ul id="treeUL" class="ztree"></ul>
+                <ul id="treeUL" class="ztree" ></ul>
                 <input type="hidden" id="powerUserId" />
             </div>
             <div class="modal-footer">
@@ -188,6 +201,7 @@ function submitForm(index){
  */
 function clearForm(){
     $("#editForm")[0].reset();
+    $("#editForm").find("input[name='userId']").val("");
 }
 /**
  * 显示新增用户
@@ -242,6 +256,9 @@ function showEditModal(loginName){
             $("#editForm").find("input[name='userId']").val(data.userId);
             $("#editForm").find("input[name='userName']").val(data.userName);
             $("#editForm").find("input[name='loginName']").val(data.loginName);
+            if(!!data.loginInvalid) {
+                $("#editForm").find("input[name='loginInvalidDate']").val(fmtDate(data.loginInvalid));
+            }
             $("#edit_user_modal").modal("show");
         }
     });
@@ -355,7 +372,7 @@ function showPowerSeting(userId){
 
     //清除所有选中
     var treeObj = $.fn.zTree.getZTreeObj("treeUL");
-    treeObj.cancelSelectedNode();
+    treeObj.checkAllNodes(false);
 
     $.ajax({
         url : basePath+"/system/user/getUserPowerList.html",

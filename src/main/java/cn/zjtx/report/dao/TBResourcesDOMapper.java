@@ -3,6 +3,7 @@ package cn.zjtx.report.dao;
 import java.util.List;
 
 import cn.zjtx.report.entity.TBResourcesDO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,4 +21,6 @@ public interface TBResourcesDOMapper {
     List<TBResourcesDO> selectAllActive();
 
     List<TBResourcesDO> queryResourceByParentId(Integer parentId);
+
+    Integer selectLasrOrderNo(@Param("parentId")Integer parentId);
 }

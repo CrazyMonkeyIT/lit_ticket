@@ -35,7 +35,7 @@
                     <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h4 class="blue"><i class="ace-icon fa fa-pencil-square-o"></i>编辑资源信息</h4>
                 </div>
-                <form id="EditForm" action="${request.getContextPath()}/system/resource/addResource.html" method="post">
+                <form id="EditForm" action="${request.getContextPath()}/system/resource/editResource.html" method="post">
                     <!-- 资源ID -->
                     <input type="hidden" name="resourceId" />
 
@@ -45,11 +45,10 @@
                                 <label class="col-sm-3 control-label">父菜单</label>
                                 <div class="col-sm-9">
                                     <select name="parentId" style="width: 300px; ">
-                                    <option value="">无</option>
+                                    <option value="0">无</option>
                                     <#if resourceList??>
                                         <#list resourceList as resource>
-                                            <#if resource.parentId??>
-                                            <#else>
+                                            <#if resource.parentId == 0>
                                                 <option value="${resource.resourceId}" >
                                                  ${resource.resourceName!''}
                                                 </option>
@@ -104,14 +103,14 @@
                         </div>
                     </div>
                     <div class="modal-footer" style="clear:both;">
-                        <button class="btn btn-white btn-info btn-bold" onclick="addResource();">
+                        <a class="btn btn-white btn-info btn-bold" onclick="editResource();">
                             <i class="ace-icon glyphicon glyphicon-ok blue"></i>
                             保存
-                        </button>
-                        <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                        </a>
+                        <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
                             <i class="ace-icon glyphicon glyphicon-remove blue"></i>
                             取消
-                        </button>
+                        </a>
                     </div>
                 </form>
                 <script>
@@ -135,14 +134,14 @@
                     确认删除吗？
                 </div>
                 <div class="modal-footer">
-                    <button onclick="deleteResource()" class="btn btn-white btn-info btn-bold">
+                    <a onclick="deleteResource()" class="btn btn-white btn-info btn-bold">
                         <i class="ace-icon glyphicon glyphicon-ok blue"></i>
                         确定
-                    </button>
-                    <button class="btn btn-white btn-info btn-bold" data-dismiss="modal">
+                    </a>
+                    <a class="btn btn-white btn-info btn-bold" data-dismiss="modal">
                         <i class="ace-icon glyphicon glyphicon-remove blue"></i>
                         取消
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -242,13 +241,9 @@
                     url : '${request.getContextPath()}/system/resource/changeResource.html',
                     type : 'post',
                     data : {
-                        'upName'    : node.name,
-                        'uppId' : node.pId,
                         'upOrder' : node.order,
                         'upId' : node.id,
                         'resourceId':treeNode.id,
-                        'name':treeNode.name,
-                        'parentId':treeNode.pId,
                         'orderNo':treeNode.order
                     },
                     success : function(result) {
@@ -282,14 +277,9 @@
                     url : '${request.getContextPath()}/system/resource/changeResource.html',
                     type : 'post',
                     data : {
-                        'upName'    : node.name,
-                        'uppId' : node.pId,
                         'upOrder' : node.order,
                         'upId' : node.id,
-
                         'resourceId':treeNode.id,
-                        'name':treeNode.name,
-                        'parentId':treeNode.pId,
                         'orderNo':treeNode.order
                     },
                     success : function(result) {
@@ -373,9 +363,9 @@
 </script>
 <script type="text/javascript">
     /**
-     * 新增资源
+     * 更新资源
      */
-    function addResource(){
+    function editResource(){
         var resourceName = $("#EditModal").find($("input[name='resourceName']")).val();
         var resourceUrl =  $("#EditModal").find($("input[name='resourceUrl']")).val();
         if(!resourceName){
@@ -451,6 +441,7 @@
      */
     function clearForm(){
         $("#EditForm")[0].reset();
+        $("#EditForm").find("input[name='resourceId']").val("");
     }
 
     /**

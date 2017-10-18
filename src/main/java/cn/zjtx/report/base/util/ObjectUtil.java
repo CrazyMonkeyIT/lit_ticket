@@ -6,18 +6,18 @@ import java.util.Map;
 public class ObjectUtil {
 
 	public static boolean isNullOrEmpty(Object obj){
-        if (obj == null)  
-            return true;  
-  
-        if (obj instanceof CharSequence)  
-            return ((CharSequence) obj).length() == 0;  
-  
-        if (obj instanceof Collection)  
-            return ((Collection) obj).isEmpty();  
-  
-        if (obj instanceof Map)  
-            return ((Map) obj).isEmpty();  
-  
+        if (obj == null) {
+            return true;
+        }
+        if (obj instanceof CharSequence) {
+            return ((CharSequence) obj).length() == 0;
+        }
+        if (obj instanceof Collection) {
+            return ((Collection) obj).isEmpty();
+        }
+        if (obj instanceof Map) {
+            return ((Map) obj).isEmpty();
+        }
         if (obj instanceof Object[]) {  
             Object[] object = (Object[]) obj;  
             if (object.length == 0) {  

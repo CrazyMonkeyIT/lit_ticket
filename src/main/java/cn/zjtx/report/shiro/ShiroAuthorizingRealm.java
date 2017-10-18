@@ -75,29 +75,33 @@ public class ShiroAuthorizingRealm extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken auth) throws AuthenticationException {  
         //UsernamePasswordToken对象用来存放提交的登录信息  
         UsernamePasswordToken token = (UsernamePasswordToken) auth;
-        String token_username = token.getUsername();
-        String token_password = new String(token.getPassword());
+        String tokenUsername = token.getUsername();
+        String tokenPassword = new String(token.getPassword());
         //查出是否有此用户  
-        TBLoginUserDO loginUser = loginUserService.selectByLoginName(token_username);
+        TBLoginUserDO loginUser = loginUserService.selectByLoginName(tokenUsername);
         if(loginUser == null){
-        	logger.error("用户名:" + token_username + "  不存在");
-        	throw new UnknownAccountException();//用户不存在
+        	logger.error("用户名:" + tokenUsername + "  不存在");
+			//用户不存在
+        	throw new UnknownAccountException();
         }else{
-        	if(!SHA256.verify(token_password, loginUser.getLoginPwd())){
-        		logger.error("用户名:" + token_username + "  密码不正确");
-        		throw new IncorrectCredentialsException(); //密码错误
+        	if(!SHA256.verify(tokenPassword, loginUser.getLoginPwd())){
+        		logger.error("用户名:" + tokenUsername + "  密码不正确");
+				//密码错误
+        		throw new IncorrectCredentialsException();
         	}else if(loginUser.getUserStatus() == 2){
-        		throw new LockedAccountException();//用户已被冻结
+				//用户已被冻结
+        		throw new LockedAccountException();
         	}else if(loginUser.getUserStatus() == 3){
-        		throw new AuthenticationException("account_invalid");//账户密码过期
+				//账户密码过期
+        		throw new AuthenticationException("account_invalid");
         	}
         }
         
 		//若存在，将此用户存放到登录认证info中  
-		AuthenticationInfo info = new SimpleAuthenticationInfo(token_username, token_password, getName());
+		AuthenticationInfo info = new SimpleAuthenticationInfo(tokenUsername, tokenPassword, getName());
 		clearCache(info.getPrincipals());
 		Cache<Object, Object> cache  = cacheManager.getCache("sessionCache");
-		cache.put(token_username, SecurityUtils.getSubject().getSession().getId().toString());
+		cache.put(tokenUsername, SecurityUtils.getSubject().getSession().getId().toString());
 		return info; 
 			
     }

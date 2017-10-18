@@ -1,0 +1,24 @@
+@charset "UTF-8";
+/**
+* 500 404页面
+* @authors Cobra Liu (lhg2work@sina.com)
+* @date    2017-05-20 16:26:36
+*/
+/*500 404页面*/
+body.page-500{}
+.mc-error{position: relative;width: 1280px;margin: 0 auto;}
+.mc-error .img-error{display: block;width: 100%;margin: 0 auto;}
+
+.page-500 .text{position: absolute;z-index: 3;top: 530px;left: 130px;line-height: 28px;font-size: 20px;color: #6b6b69;}
+.page-500 .text em{font-size: 32px;color: #284157;}
+.page-500 .btn-link{position: absolute;z-index: 3;top: 455px;left: 545px; line-height: 32px;font-size: 22px;color: #4d4d4c;text-decoration: underline;}
+.page-500 .btn-link:hover{color: #284157;}
+.page-500 .btn-link i{float: left;display: inline;width: 32px;height: 32px;margin-right: 6px;background: url(../images/icon-back.png) no-repeat;overflow: hidden;}
+
+
+body.page-404{background-color: #212121;}
+body.page-404 .msg{position: absolute;z-index: 3;width: 225px;top: 355px;right: 50px;text-align: center;}
+body.page-404 .text{font-size: 18px;font-weight: bold;color: #fff;}
+body.page-404 .sub-text{margin-top: 15px;color: #fff;}
+body.page-404 .btn-link{display: inline-block;width: 160px;height: 32px;margin-top: 95px;line-height: 32px;font-size: 20px;color: #fff;text-align: center;background-color: #f95934;}
+body.page-404 .btn-link:hover{background-color: #e64f2c;}

@@ -30,6 +30,9 @@ public class ResourcesServiceImpl implements ResourcesService {
 			record.setCreateTime(new Timestamp(System.currentTimeMillis()));
 			resourcesDOMapper.insertSelective(record);
 		}else{
+			if(record.getParentId().equals(record.getResourceId())){
+				record.setParentId(null);
+			}
 			record.setUpdateTime(new Timestamp(System.currentTimeMillis()));
 			resourcesDOMapper.updateByPrimaryKeySelective(record);
 		}

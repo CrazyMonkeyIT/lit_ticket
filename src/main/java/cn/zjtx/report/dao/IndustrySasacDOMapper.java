@@ -3,6 +3,7 @@ package cn.zjtx.report.dao;
 import java.util.List;
 
 import cn.zjtx.report.entity.IndustrySasacDO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -17,5 +18,5 @@ public interface IndustrySasacDOMapper {
 
     List<IndustrySasacDO> selectAll();
 
-    Integer selectLasrOrderNo(Integer parentId);
+    Integer selectLasrOrderNo(@Param("parentId")Integer parentId);
 }

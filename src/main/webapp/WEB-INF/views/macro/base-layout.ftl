@@ -107,7 +107,7 @@
 			<div class="sidebar" id="sidebar">
 				<ul class="nav nav-list">
 					<#list menuList as menu>
-						<#if menu.resourceType == 0 && !menu.parentId?exists>
+						<#if menu.resourceType == 0 && menu.parentId == 0>
 							<li class="open <#if SelectOneLevelId?? && SelectOneLevelId == menu.resourceId>active</#if>">
 								<#if menu.hasChild>
 									<a href="#" class="dropdown-toggle">

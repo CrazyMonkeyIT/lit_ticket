@@ -7,7 +7,7 @@
     <div class="col-xs-4" >
         <div class="widget-box" >
             <div class="widget-header widget-header-flat">
-                <h4 class="widget-title">国资委行业列表</h4>
+                <h4 class="widget-title">国标行业列表</h4>
                 <div class="widget-toolbar">
                     <a href="javascript:showAddModal()" id="addBtn" class="btn btn-white btn-info">
                         &nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;新增行业&nbsp;
@@ -32,7 +32,7 @@
                     <button data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
                     <h4 class="blue"><i class="ace-icon fa fa-pencil-square-o"></i>编辑国资委行业</h4>
                 </div>
-                <form id="EditForm" action="${request.getContextPath()}/system/sasacIndustry/update.html" method="post">
+                <form id="EditForm" action="${request.getContextPath()}/system/nationalStandard/update.html" method="post">
                     <!-- ID -->
                     <input type="hidden" name="id" />
 
@@ -43,15 +43,15 @@
                                 <div class="col-sm-9">
                                     <select name="parentId" style="width: 300px; ">
                                         <option value="0">无</option>
-										<#if industrys??>
-											<#list industrys as record>
-												<#if record.parentId == 0>
+                                        <#if industrys??>
+                                            <#list industrys as record>
+                                                <#if record.parentId == 0>
                                                     <option value="${record.id}" >
-													${record.industryName!''}
+                                                    ${record.industryName!''}
                                                     </option>
-												</#if>
-											</#list>
-										</#if>
+                                                </#if>
+                                            </#list>
+                                        </#if>
                                     </select>
                                 </div>
                             </div>
@@ -211,7 +211,7 @@
                     node.pId=0;
                 }
                 $.ajax({
-                    url : '${request.getContextPath()}/system/sasacIndustry/updatePosition.html',
+                    url : '${request.getContextPath()}/system/nationalStandard/updatePosition.html',
                     type : 'post',
                     data : {
                         'upOrder' : node.order,
@@ -221,7 +221,7 @@
                     },
                     success : function(result) {
                         if(result){
-                            window.location.href = '${request.getContextPath()}/system/sasacIndustry/list.html';
+                            window.location.href = '${request.getContextPath()}/system/nationalStandard/list.html';
                         }else{
                             alert("系统异常");
                         }
@@ -247,7 +247,7 @@
                     node.pId=0;
                 }
                 $.ajax({
-                    url : '${request.getContextPath()}/system/sasacIndustry/updatePosition.html',
+                    url : '${request.getContextPath()}/system/nationalStandard/updatePosition.html',
                     type : 'post',
                     data : {
                         'upOrder' : node.order,
@@ -257,7 +257,7 @@
                     },
                     success : function(result) {
                         if(result){
-                            window.location.href = '${request.getContextPath()}/system/sasacIndustry/list.html';
+                            window.location.href = '${request.getContextPath()}/system/nationalStandard/list.html';
                         }else{
                             alert("系统异常");
                         }
@@ -294,7 +294,7 @@
         }
     }
     function onRemove(e, treeId, treeNode) {
-        window.location.href = '${request.getContextPath()}/system/sasacIndustry/list.html';
+        window.location.href = '${request.getContextPath()}/system/nationalStandard/list.html';
     }
     function beforeRename(treeId, treeNode, newName, isCancel) {
         if (newName.length == 0) {
@@ -334,23 +334,23 @@
             return false;
         }
 
-		$.ajax({
-			url : $("#EditForm").attr("action"),
-			type : 'post',
-			data : $("#EditForm").serialize(),
-			success : function(result) {
-				if(result){
-					window.location.href = '${request.getContextPath()}/system/sasacIndustry/list.html';
-				}else{
-					alert("系统错误");
-				}
-			}
-		});
+        $.ajax({
+            url : $("#EditForm").attr("action"),
+            type : 'post',
+            data : $("#EditForm").serialize(),
+            success : function(result) {
+                if(result){
+                    window.location.href = '${request.getContextPath()}/system/nationalStandard/list.html';
+                }else{
+                    alert("系统错误");
+                }
+            }
+        });
     }
     //获取信息
     function getEditInfo(id){
         $.ajax({
-            url : '${request.getContextPath()}/system/sasacIndustry/getInfo.html',
+            url : '${request.getContextPath()}/system/nationalStandard/getInfo.html',
             type : 'post',
             data : {
                 'id' : id
@@ -370,7 +370,7 @@
     //删除
     function deleteIndustry(){
         $.ajax({
-            url : '${request.getContextPath()}/system/sasacIndustry/delete.html',
+            url : '${request.getContextPath()}/system/nationalStandard/delete.html',
             type : 'post',
             async:false,
             data : {
@@ -378,7 +378,7 @@
             },
             success : function(result) {
                 if(result){
-                    window.location.href = '${request.getContextPath()}/system/sasacIndustry/list.html';
+                    window.location.href = '${request.getContextPath()}/system/nationalStandard/list.html';
                 }else{
                     alert("系统异常");
                 }

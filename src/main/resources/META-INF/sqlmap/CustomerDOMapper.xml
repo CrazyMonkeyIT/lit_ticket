@@ -8,7 +8,7 @@
     <result column="cust_scale" property="custScale" jdbcType="INTEGER" />
     <result column="national_standard_id" property="nationalStandardId" jdbcType="INTEGER" />
     <result column="industry_sasac_id" property="industrySasacId" jdbcType="INTEGER" />
-    <result column="enterprise attribute" property="enterpriseAttribute" jdbcType="INTEGER" />
+    <result column="enterprise_attribute" property="enterpriseAttribute" jdbcType="INTEGER" />
     <result column="active" property="active" jdbcType="INTEGER" />
     <result column="create_user_id" property="createUserId" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
@@ -16,7 +16,7 @@
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, cust_name, cust_code, cust_scale, national_standard_id, industry_sasac_id, "enterprise attribute", 
+    id, cust_name, cust_code, cust_scale, national_standard_id, industry_sasac_id, enterprise_attribute,
     active, create_user_id, create_time, update_user_id, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -29,11 +29,17 @@
   <select id="selectCurrUserCustList" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List" />
-    from customer where FIND_IN_SET(create_user_id,getChildList(#{userId}))
+    from customer where (FIND_IN_SET(create_user_id,getChildList(#{userId})) or create_user_id = #{userId}) and active = 1
     <if test="custName != null" >
       and cust_name like CONCAT('%',#{custName},'%')
     </if>
     order by create_time desc
+  </select>
+  <!-- 根据客户名称查询客户信息 -->
+  <select id="selectByCustName" resultType="cn.zjtx.report.entity.CustomerDO">
+    select
+    <include refid="Base_Column_List" />
+    from customer where cust_name = #{custName} and active = 1
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -63,7 +69,7 @@
         industry_sasac_id,
       </if>
       <if test="enterpriseAttribute != null" >
-        "enterprise attribute",
+        enterprise_attribute,
       </if>
       <if test="active != null" >
         active,
@@ -139,7 +145,7 @@
         industry_sasac_id = #{industrySasacId,jdbcType=INTEGER},
       </if>
       <if test="enterpriseAttribute != null" >
-        "enterprise attribute" = #{enterpriseAttribute,jdbcType=INTEGER},
+        enterprise_attribute = #{enterpriseAttribute,jdbcType=INTEGER},
       </if>
       <if test="active != null" >
         active = #{active,jdbcType=INTEGER},

@@ -60,7 +60,15 @@ public class SasacIndustryController {
 		mv.setViewName("pages/system/industry/sasac_list");
 		return mv;
 	}
-
+	/**
+	 * 获取国资委行业列表
+	 */
+	@RequestMapping("/getAllList.html")
+	@ResponseBody
+	public List<IndustrySasacDO> getAllList(){
+		List<IndustrySasacDO> industrys = industrySasacService.selectAll();
+		return industrys;
+	}
 	/**
 	 * 根据ID查询国资委行业信息
 	 * @return

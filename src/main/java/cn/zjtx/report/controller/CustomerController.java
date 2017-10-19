@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 客户管理
@@ -29,7 +31,7 @@ public class CustomerController extends BaseController{
 	/**
   	 * 客户列表
 	 */
-	@RequestMapping(value = "/list.html", method = RequestMethod.GET)
+	@RequestMapping(value = "/list.html")
 	public String list(ModelMap mm,String custName,Integer pageIndex){
 		PageInfo<CustomerDO> page = null;
 		try{
@@ -41,20 +43,33 @@ public class CustomerController extends BaseController{
 		mm.addAttribute("custName",custName);
 		return "pages/customer/list";
 	}
-
+	/**
+	 * 获取客户信息
+	 */
+	@RequestMapping("/getInfo.html")
+	@ResponseBody
+	public CustomerDO getInfo(Integer id){
+		CustomerDO record = null;
+		try{
+			record = customerService.selectByPrimaryKey(id);
+		}catch (Exception e){
+			logger.error("获取客户信息异常",e);
+		}
+		return record;
+	}
 	/**
 	 * 更新客户信息
 	 */
 	@RequestMapping("/update.html")
 	@ResponseBody
-	public Boolean update(CustomerDO record){
-		Boolean result = false;
+	public Map<String,Object> update(CustomerDO record){
+		Map<String,Object> resultMap = new HashMap<String,Object>();
 		try{
-			result = customerService.insertOrUpdate(record,getCurrentUser().getUserId());
+			resultMap = customerService.insertOrUpdate(record,getCurrentUser().getUserId());
 		}catch (Exception e){
 			logger.error("更新客户信息异常",e);
 		}
-		return result;
+		return resultMap;
 	}
 
 	/**

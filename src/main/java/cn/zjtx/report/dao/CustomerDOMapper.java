@@ -16,6 +16,8 @@ public interface CustomerDOMapper {
 
     CustomerDO selectByPrimaryKey(Integer id);
 
+    CustomerDO selectByCustName(@Param("custName")String custName);
+
     List<CustomerDO> selectCurrUserCustList(@Param("userId")Integer userId,@Param("custName")String custName);
 
 }

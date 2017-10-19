@@ -57,7 +57,15 @@ public class NationalStandardController {
 		mv.setViewName("pages/system/industry/standard_list");
 		return mv;
 	}
-
+	/**
+	 * 获取国标行业列表
+	 */
+	@RequestMapping("/getAllList.html")
+	@ResponseBody
+	public List<NationalStandardDO> getAllList(){
+		List<NationalStandardDO> list = nationalStandardService.selectAll();
+		return list;
+	}
     /**
 	 * 根据ID查询国标行业信息
 	 * @return

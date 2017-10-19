@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 客户管理
@@ -38,24 +40,37 @@ public class CustomerServiceImpl implements CustomerService {
         return result;
     }
 
+
     /**
      * 更新客户信息
      * @param record
      * @return
      */
     @Override
-    public boolean insertOrUpdate(CustomerDO record,Integer userId) {
-        if(record.getId() == null){
-            record.setActive(1);
-            record.setCreateUserId(userId);
-            record.setCreateTime(new Timestamp(System.currentTimeMillis()));
-            customerDOMapper.insertSelective(record);
-        }else{
-            record.setUpdateUserId(userId);
-            record.setUpdateTime(new Timestamp(System.currentTimeMillis()));
-            customerDOMapper.updateByPrimaryKeySelective(record);
+    public Map<String,Object> insertOrUpdate(CustomerDO record, Integer userId) {
+        boolean isSuccess = false;
+        String message = "";
+        CustomerDO custNameRecord = customerDOMapper.selectByCustName(record.getCustName());
+        if(custNameRecord != null && !custNameRecord.getId().equals(record.getId())){
+            message = "该客户名已存在，不能重复创建";
+        }else {
+            if (record.getId() == null) {
+                record.setActive(1);
+                record.setCreateUserId(userId);
+                record.setCreateTime(new Timestamp(System.currentTimeMillis()));
+                int rows = customerDOMapper.insertSelective(record);
+                isSuccess = (rows > 0);
+            } else {
+                record.setUpdateUserId(userId);
+                record.setUpdateTime(new Timestamp(System.currentTimeMillis()));
+                int rows = customerDOMapper.updateByPrimaryKeySelective(record);
+                isSuccess = (rows > 0);
+            }
         }
-        return true;
+        Map<String,Object> resultMap = new HashMap<String,Object>();
+        resultMap.put("result",isSuccess);
+        resultMap.put("message",message);
+        return resultMap;
     }
 
     /**

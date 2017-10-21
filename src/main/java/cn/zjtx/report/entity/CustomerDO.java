@@ -27,6 +27,15 @@ public class CustomerDO {
 
     private Date updateTime;
 
+    /**
+     * 表外字段
+     */
+    private String nationalStandardName;
+    /**
+     * 表外字段
+     */
+    private String industrySasacName;
+
     public Integer getId() {
         return id;
     }
@@ -121,5 +130,21 @@ public class CustomerDO {
 
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
+    }
+
+    public String getNationalStandardName() {
+        return nationalStandardName;
+    }
+
+    public String getIndustrySasacName() {
+        return industrySasacName;
+    }
+
+    public void setNationalStandardName(String nationalStandardName) {
+        this.nationalStandardName = nationalStandardName;
+    }
+
+    public void setIndustrySasacName(String industrySasacName) {
+        this.industrySasacName = industrySasacName;
     }
 }

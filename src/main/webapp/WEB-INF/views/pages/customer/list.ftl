@@ -49,7 +49,7 @@
 						<#list page.list as data>
                             <tr>
                                 <td>${((page.pageNum-1) * 10) + (data_index+1)}</td>
-                                <td>${data.custName!''}</span></td>
+                                <td><span class="blue">${data.custName!''}</span></td>
                                 <td>${data.custCode!''}</td>
                                 <td>
                                     <#if data.custScale == 1>大</#if>
@@ -64,8 +64,8 @@
                                     <#if data.enterpriseAttribute == 3>民营大企业</#if>
                                     <#if data.enterpriseAttribute == 4>民营中小企业</#if>
                                 </td>
-                                <td>${data.nationalStandardId!''}</td>
-                                <td>${data.industrySasacId!''}</td>
+                                <td>${data.nationalStandardName!''}</td>
+                                <td>${data.industrySasacName!''}</td>
                                 <td>
                                     <#if data.createTime??>${(data.createTime?string('yyyy-MM-dd HH:mm:ss'))}</#if>
                                 </td>
@@ -207,6 +207,8 @@
     function clearForm(){
         $("#editForm")[0].reset();
         $("#editForm").find("input[name='id']").val("");
+        $("#span1").html("");
+        $("#span2").html("");
     }
     /**
      * 显示新增

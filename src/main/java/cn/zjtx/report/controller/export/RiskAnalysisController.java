@@ -22,6 +22,7 @@ public class RiskAnalysisController extends BaseController{
      */
     @RequestMapping("/page.html")
     public String page(ModelMap modelMap){
+        modelMap.addAttribute("custList",getCurrCustList());
         return "pages/export/riskAnalysis";
     }
 }

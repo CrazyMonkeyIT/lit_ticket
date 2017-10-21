@@ -66,16 +66,9 @@
 						</a>
                         <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close" style="">
                             <li>
-                                <a href="#">
-                                    <i class="ace-icon fa fa-cog"></i>
-                                    设置
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="profile.html">
-                                    <i class="ace-icon fa fa-user"></i>
-                                    个人资料
+                                <a href="javascript:showModifyPwdModal()" >
+                                    <i class="ace-icon fa fa-key"></i>
+                                    修改密码
                                 </a>
                             </li>
 
@@ -108,7 +101,7 @@
 				<ul class="nav nav-list">
 					<#list menuList as menu>
 						<#if menu.resourceType == 0 && menu.parentId == 0>
-							<li class="open <#if SelectOneLevelId?? && SelectOneLevelId == menu.resourceId>active</#if>">
+							<li class="<#if menu.hasChild>open</#if> <#if SelectOneLevelId?? && SelectOneLevelId == menu.resourceId>active</#if>">
 								<#if menu.hasChild>
 									<a href="#" class="dropdown-toggle">
 										<i class="${menu.cssCls!'menu-icon fa fa-desktop'}"></i>
@@ -141,6 +134,9 @@
 						</#if>
 					</#list>
 				</ul><!-- /.nav-list -->
+                <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                    <i id="sidebar-toggle-icon" class="ace-save-state ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+                </div>
 			</div>
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -170,6 +166,9 @@
 						</div><!-- /.col -->
 					</div><!-- /.row -->
 				</div><!-- /.page-content -->
+				<!-- 修改密码 begin -->
+				<#include  "modifyPwd.ftl" />
+				<!-- 修改密码 end -->
 			</div><!-- /.main-content -->
 	</div><!-- /.main-container -->
 	<script src="${request.contextPath}/static/assets/js/bootstrap.min.js"></script>
@@ -178,6 +177,32 @@
 	<script src="${request.contextPath}/static/assets/js/ace.min.js"></script>
 	<script>
 	var basePath  = '${request.getContextPath()}';
+
+    /**
+     * 如果Ajax请求中，用户session已失效，则跳转登录页
+     */
+    jQuery(function($){
+        // 备份jquery的ajax方法
+        var _ajax= $.ajax;
+        // 重写ajax方法
+        $.ajax=function(opt){
+            var _success = opt && opt.success || function(a, b){};
+            var _error = opt && opt.error || function(a, b){};
+            var _opt = $.extend(opt, {
+                success:function(data, textStatus){
+                    if(data == 'logout') {
+                        window.location.href= basePath+"/login.html";
+                        return;
+                    }
+                    _success(data, textStatus);
+                },
+                error:function(data, textStatus){
+                    _error(data, textStatus);
+                }
+            });
+            return _ajax(_opt);
+        };
+    });
 	/**
 	 * 登出
 	 */

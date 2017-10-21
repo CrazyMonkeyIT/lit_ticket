@@ -16,4 +16,5 @@ public interface CustomerService {
 
     PageInfo<CustomerDO> selectCurrUserCustList(Integer userId, String custName, Integer pageIndex, Integer pageSize);
 
+    List<CustomerDO> selectCurrUserCustKV(Integer userId);
 }

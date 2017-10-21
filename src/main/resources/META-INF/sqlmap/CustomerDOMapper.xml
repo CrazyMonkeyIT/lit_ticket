@@ -14,6 +14,9 @@
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_user_id" property="updateUserId" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+
+    <result column="national_standard_name" property="nationalStandardName" jdbcType="INTEGER" />
+    <result column="industry_sasac_name" property="industrySasacName" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, cust_name, cust_code, cust_scale, national_standard_id, industry_sasac_id, enterprise_attribute,
@@ -28,12 +31,26 @@
   <!-- 查询当前用户的客户列表 -->
   <select id="selectCurrUserCustList" resultMap="BaseResultMap">
     select
-    <include refid="Base_Column_List" />
-    from customer where (FIND_IN_SET(create_user_id,getChildList(#{userId})) or create_user_id = #{userId}) and active = 1
+    a.id, a.cust_name, a.cust_code, a.cust_scale, a.national_standard_id, a.industry_sasac_id, a.enterprise_attribute,
+    a.active, a.create_user_id, a.create_time, a.update_user_id, a.update_time,
+    b.industry_name as national_standard_name,
+    c.industry_name as industry_sasac_name
+    from customer a
+    inner join national_standard b on b.id = a.national_standard_id
+    inner join industry_sasac c on c.id = a.industry_sasac_id
+    where (FIND_IN_SET(a.create_user_id,getChildList(#{userId})) or a.create_user_id = #{userId}) and a.active = 1
     <if test="custName != null" >
-      and cust_name like CONCAT('%',#{custName},'%')
+      and a.cust_name like CONCAT('%',#{custName},'%')
     </if>
-    order by create_time desc
+    order by a.create_time desc
+  </select>
+  <!-- 查询当前用户的客户列表（键值对） -->
+  <select id="selectCurrUserCustKV" resultMap="BaseResultMap">
+    select
+    a.id, a.cust_name
+    from customer a
+    where (FIND_IN_SET(a.create_user_id,getChildList(#{userId})) or a.create_user_id = #{userId}) and a.active = 1
+    order by a.create_time desc
   </select>
   <!-- 根据客户名称查询客户信息 -->
   <select id="selectByCustName" resultType="cn.zjtx.report.entity.CustomerDO">

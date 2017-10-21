@@ -70,7 +70,10 @@ public class IndustrySasacServiceImpl implements IndustrySasacService {
 	 */
 	@Override
 	public boolean deleteByPrimaryKey(Integer id) {
-		int rows = industrySasacDOMapper.deleteByPrimaryKey(id);
+		IndustrySasacDO record = new IndustrySasacDO();
+		record.setId(id);
+		record.setActive(0);
+		int rows = industrySasacDOMapper.updateByPrimaryKeySelective(record);
 		return (rows > 0);
 	}
 

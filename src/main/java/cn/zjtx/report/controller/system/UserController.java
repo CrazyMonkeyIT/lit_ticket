@@ -2,6 +2,7 @@ package cn.zjtx.report.controller.system;
 
 import cn.zjtx.report.base.util.DateUtil;
 import cn.zjtx.report.base.util.StringUtil;
+import cn.zjtx.report.bean.BaseResult;
 import cn.zjtx.report.controller.BaseController;
 import cn.zjtx.report.entity.TBLoginUserDO;
 import cn.zjtx.report.entity.TBResourcesDO;
@@ -171,6 +172,20 @@ public class UserController extends BaseController{
             result = loginUserService.updateUserPower(userId,json);
         }catch(Exception e){
             logger.error("修改用户权限异常",e);
+        }
+        return result;
+    }
+    /**
+     * 修改用户密码
+     */
+    @RequestMapping("/modifyPwd.html")
+    @ResponseBody
+    public BaseResult modifyPwd(String oldPwd,String newPwd){
+        BaseResult result = null;
+        try{
+            result = loginUserService.modifyPwd(getCurrentUser().getUserId(),oldPwd,newPwd);
+        }catch (Exception e){
+            logger.error("修改用户密码异常",e);
         }
         return result;
     }

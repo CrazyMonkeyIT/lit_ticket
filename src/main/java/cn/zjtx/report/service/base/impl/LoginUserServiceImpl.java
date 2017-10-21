@@ -1,6 +1,7 @@
 package cn.zjtx.report.service.base.impl;
 import cn.zjtx.report.base.util.SHA256;
 import cn.zjtx.report.base.util.StringUtil;
+import cn.zjtx.report.bean.BaseResult;
 import cn.zjtx.report.dao.TBUserResourceDOMapper;
 import cn.zjtx.report.entity.TBUserResourceDO;
 import com.github.pagehelper.PageHelper;
@@ -57,9 +58,10 @@ public class LoginUserServiceImpl implements LoginUserService {
 
 	/**
 	 * 查询用户列表
+	 * @param userId
 	 * @param userName
-	 * @param pageIndex
-	 * @param pageSize
+	 * @param page
+	 * @param size
 	 * @return
 	 */
 	@Override
@@ -108,7 +110,10 @@ public class LoginUserServiceImpl implements LoginUserService {
 	 */
 	@Override
 	public boolean deleteUser(Integer userId) {
-		int rows = loginUserDOMapper.deleteByPrimaryKey(userId);
+		TBLoginUserDO user = new TBLoginUserDO();
+		user.setUserId(userId);
+		user.setUserStatus(4);
+		int rows = loginUserDOMapper.updateByPrimaryKeySelective(user);
 		return (rows > 0);
 	}
 
@@ -132,6 +137,28 @@ public class LoginUserServiceImpl implements LoginUserService {
 			userResourceDOMapper.insertSelective(record);
 		}
 		return true;
+	}
+
+	/**
+	 * 修改密码
+	 * @param userId
+	 * @param oldPwd
+	 * @param newPwd
+	 * @return
+	 */
+	@Override
+	public BaseResult modifyPwd(Integer userId, String oldPwd, String newPwd) {
+		BaseResult result = new BaseResult();
+		result.setSuccess(false);
+		TBLoginUserDO user = loginUserDOMapper.selectByPrimaryKey(userId);
+		if(!user.getLoginPwd().equals(SHA256.encrypt(oldPwd))){
+			result.setMessage("原密码不正确");
+		}else{
+			user.setLoginPwd(SHA256.encrypt(newPwd));
+			loginUserDOMapper.updateByPrimaryKeySelective(user);
+			result.setSuccess(true);
+		}
+		return result;
 	}
 
 }

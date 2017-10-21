@@ -16,13 +16,38 @@
 </style>
 <div style="width:250px;min-height:447px;float:left;">
     <h4 class="header smaller lighter blue"><i class="ace-icon fa fa-users"></i>&nbsp;客户列表</h4>
-    <ul id="menu" style="height:100%;width: 97%;" class="ui-menu ui-widget ui-widget-content" role="menu" tabindex="0" aria-activedescendant="ui-id-4">
-        <li class="ui-menu-item ui-state-focus" id="ui-id-4" tabindex="-1" role="menuitem">客户1<i class="ace-icon glyphicon glyphicon-ok right" ></i></li>
-        <li class="ui-menu-item" id="ui-id-5" tabindex="-1" role="menuitem">客户1</li>
-        <li class="ui-menu-item" id="ui-id-6" tabindex="-1" role="menuitem">客户1</li>
-        <li class="ui-menu-item" id="ui-id-11" tabindex="-1" role="menuitem">客户1</li>
+    <ul id="custMenu" style="height:100%;width: 97%;" class="ui-menu ui-widget ui-widget-content" role="menu" tabindex="0" aria-activedescendant="ui-id-${selectCustId!''}">
+        <#list custList as cust>
+            <li onclick="updateSelectCust(${cust.id},'${cust.custName}')" class="ui-menu-item <#if selectCustId?? && selectCustId == cust.id>ui-state-focus</#if>" id="ui-id-${cust.id}" tabindex="-1" role="menuitem">
+                ${cust.custName}
+                <#if selectCustId?? && selectCustId == cust.id>
+                    <i class="ace-icon glyphicon glyphicon-ok right" ></i>
+                </#if>
+            </li>
+        </#list>
     </ul>
 </div>
+<script type="text/javascript">
+    /**
+     * 更新选中客户
+     */
+    function updateSelectCust(custId,custName){
+        $.ajax({
+            url : basePath+"/updateSelectCust.html",
+            type : 'post',
+            data : {
+                "custId":custId
+            },
+            success : function(data) {
+                $("li[id^='ui-id']").removeClass("ui-state-focus");
+                $("li[id^='ui-id']").find("i").remove();
+                $("#ui-id-"+custId).html(custName+'<i class="ace-icon glyphicon glyphicon-ok right" ></i>');
+                $("#ui-id-"+custId).addClass("ui-state-focus");
+                $("#custMenu").attr("aria-activedescendant","ui-id-"+custId);
+            }
+        });
+    }
+</script>
 <div class="widget-box" style="width:809px;height:447px;float:left;margin-left: 20px;">
     <div class="widget-header">
         <h4 class="widget-title"><i class="ace-icon fa fa-bar-chart-o"></i>风险分析</h4>

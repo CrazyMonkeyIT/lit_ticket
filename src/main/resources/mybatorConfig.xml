@@ -2,7 +2,7 @@
         PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>   
-     <classPathEntry location="/Users/maowankui/.m2/repository/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar" />  
+     <classPathEntry location="C:\\Users\\Administrator\\.m2\\repository/mysql/mysql-connector-java/5.1.21/mysql-connector-java-5.1.21.jar" />
      
     <context id="mysqlTables" targetRuntime="MyBatis3">
     
@@ -24,22 +24,22 @@
         </javaTypeResolver>
           
         <!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->  
-        <javaModelGenerator targetPackage="cn.zjtx.report.entity" targetProject="shzjtx">  
+        <javaModelGenerator targetPackage="cn.zjtx.report.entity" targetProject="D:\jztx\lit_ticket\src\main\java">
             <property name="enableSubPackages" value="true"/> 
             <property name="trimStrings" value="true" /> 
         </javaModelGenerator>  
           
         <!--对应的xml mapper文件  -->  
-        <sqlMapGenerator targetPackage="cn.zjtx.report.dao" targetProject="shzjtx">  
+        <sqlMapGenerator targetPackage="cn.zjtx.report.dao" targetProject="D:\jztx\lit_ticket\src\main\java">
             <property name="enableSubPackages" value="true"/>  
         </sqlMapGenerator>  
           
         <!-- 对应的dao接口 -->  
-        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.zjtx.report.dao" targetProject="shzjtx">  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.zjtx.report.dao" targetProject="D:\jztx\lit_ticket\src\main\java">
             <property name="enableSubPackages" value="true"/>  
         </javaClientGenerator>  
         
-        <table schema="" tableName="INDUSTRY_SASAC" domainObjectName="IndustrySasacDO"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table schema="" tableName="CUSTOMER" domainObjectName="CustomerDO"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
         <!-- table schema="" tableName="T_B_USER_RESOURCE" domainObjectName="TBUserResourceDO"  enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>   

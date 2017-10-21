@@ -68,7 +68,10 @@ public class NationalStandardServiceImpl implements NationalStandardService {
 	 */
 	@Override
 	public boolean deleteByPrimaryKey(Integer id) {
-		int rows = nationalStandardDOMapper.deleteByPrimaryKey(id);
+		NationalStandardDO record = new NationalStandardDO();
+		record.setId(id);
+		record.setActive(0);
+		int rows = nationalStandardDOMapper.updateByPrimaryKeySelective(record);
 		return (rows > 0);
 	}
 

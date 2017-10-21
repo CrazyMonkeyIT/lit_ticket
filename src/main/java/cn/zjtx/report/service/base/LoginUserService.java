@@ -1,5 +1,6 @@
 package cn.zjtx.report.service.base;
 
+import cn.zjtx.report.bean.BaseResult;
 import cn.zjtx.report.entity.TBLoginUserDO;
 import com.github.pagehelper.PageInfo;
 
@@ -18,4 +19,6 @@ public interface LoginUserService {
 	public boolean deleteUser(Integer userId);
 
 	public boolean updateUserPower(Integer userId,String json);
+
+	public BaseResult modifyPwd(Integer userId,String oldPwd,String newPwd);
 }

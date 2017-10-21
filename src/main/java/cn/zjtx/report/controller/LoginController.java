@@ -6,6 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import cn.zjtx.report.base.util.Des3Util;
+import cn.zjtx.report.base.util.IpUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -30,6 +32,8 @@ import cn.zjtx.report.service.base.ResourcesService;
 
 /**
  * 登录
+ * @author xiaxin
+ * @date 2017-10-10
  */
 @Controller
 public class LoginController {
@@ -41,13 +45,27 @@ public class LoginController {
 	
 	@Autowired
 	private LoginUserService loginUserService;
-	
+
+	/**
+	 * 进入登录页
+	 * @param mv
+	 * @return
+	 */
 	@RequestMapping(value = "/login.html", method = RequestMethod.GET)
 	public ModelAndView login(ModelAndView mv){
+		mv.addObject("DES_SECRET_KEY",Des3Util.SECRET_KEY);
 		mv.setViewName("pages/login");
 		return mv;
 	}
-	
+
+	/**
+	 * 登录
+	 * @param req
+	 * @param resp
+	 * @param loginname
+	 * @param password
+	 * @return
+	 */
 	@RequestMapping(value = "/loginSubmit.html", method = RequestMethod.POST)
 	@ResponseBody
 	public BaseResult loginSubmit(HttpServletRequest req, HttpServletResponse resp,String loginname,String password){
@@ -55,7 +73,7 @@ public class LoginController {
 		Subject subject = null;
 		try {
 			subject = SecurityUtils.getSubject();
-			UsernamePasswordToken token = new UsernamePasswordToken(loginname,password);
+			UsernamePasswordToken token = new UsernamePasswordToken(loginname, Des3Util.decode(password));
 			subject.login(token);
 		} catch (UnknownAccountException uae) {
 			logger.error("登录失败：用户名或密码错误");
@@ -65,11 +83,11 @@ public class LoginController {
 			return result;
 		} catch (LockedAccountException lae) {
 			logger.error("登录失败：账户冻结");
-			result.setMsg("account_lock");
+			result.setMessage("account_lock");
 			return result;
 		} catch (AuthenticationException ae) {
 			if("account_invalid".equals(ae.getMessage())){
-				result.setMsg("account_invalid");
+				result.setMessage("account_invalid");
 				return result;
 			}
 			logger.error("登录失败，账户失效",ae);
@@ -84,6 +102,7 @@ public class LoginController {
 		Date updateTime = new Date();		
 		loginUser.setLastLoginTime(updateTime);
         loginUser.setUpdateTime(updateTime);
+        loginUser.setLastLoginIp(IpUtil.getRemoteIP(req));
         loginUserService.insertOrUpdate(loginUser);
 
         //如果当前用户没有父账户，那么就是顶级账户，顶级账户会加载所有资源
@@ -95,15 +114,20 @@ public class LoginController {
 		}
         userResources = resourcesOper(userResources);
         if(userResources.size() == 0){
-        	result.setMsg("no_permission");
+        	result.setMessage("no_permission");
         	return result;
         }
         req.getSession().setAttribute("menuList", userResources);
 		result.setSuccess(true);
-		result.setMsg("success");
+		result.setMessage("success");
 		return result;
 	}
-	
+
+	/**
+	 * 资源菜单设置
+	 * @param userResources
+	 * @return
+	 */
 	private List<TBResourcesDO> resourcesOper(List<TBResourcesDO> userResources){
 		for (TBResourcesDO re : userResources) {
 			if(re.getParentId() != null && re.getParentId() != 0){
@@ -126,6 +150,15 @@ public class LoginController {
 		request.getSession().setAttribute("SelectTwoLevelId",twoId);
 		request.getSession().setAttribute("SelectOneLevelName",oneName);
 		request.getSession().setAttribute("SelectTwoLevelName",twoName);
+		return true;
+	}
+	/**
+	 * 更新客户选中状态
+	 */
+	@RequestMapping("/updateSelectCust.html")
+	@ResponseBody
+	public Boolean updateSelectCust(HttpServletRequest request,Integer custId){
+		request.getSession().setAttribute("selectCustId",custId);
 		return true;
 	}
 }

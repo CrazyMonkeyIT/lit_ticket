@@ -67,7 +67,8 @@
        <property name="unauthorizedUrl" value="/error/noPermission.html"/>    
        <!-- 权限配置 -->
        <property name="filters">  
-          <map>  
+          <map>
+			  <entry key="authc" value-ref="powerFilter"></entry>
           </map>
        </property>  
        <property name="filterChainDefinitions">

@@ -37,6 +37,7 @@
                         <th >登录名</th>
                         <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>失效时间</th>
                         <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>最后登录时间</th>
+                        <th ><i class="normal-icon ace-icon fa fa-clock-o"></i>创建时间</th>
                         <th >状态</th>
                         <th ><i class="ace-icon fa fa-wrench"></i>操作</th>
                     </tr>
@@ -50,13 +51,14 @@
                                 <td>${data.loginName!''}</td>
                                 <td><#if data.loginInvalid??>${(data.loginInvalid?string('yyyy-MM-dd HH:mm:ss'))}</#if></td>
                                 <td><#if data.lastLoginTime??>${(data.lastLoginTime?string('yyyy-MM-dd HH:mm:ss'))}</#if></td>
+                                <td><#if data.createTime??>${(data.createTime?string('yyyy-MM-dd HH:mm:ss'))}</#if></td>
                                 <td>
                                     <#if (data.userStatus==1)>
-                                        <span class="label label-sm label-success arrowed">正常</span>
+                                        <span class="label label-success label-white middle">正常</span>
                                     <#elseif (data.userStatus==2)>
-                                        <span class="label label-sm label-yellow">冻结</span>
+                                        <span class="label label-yellow label-white middle">冻结</span>
                                     <#elseif (data.userStatus==3)>
-                                        <span class="label label-sm">失效</span>
+                                        <span class="label label-white middle">失效</span>
                                     </#if>
                                 </td>
                                 <td >
@@ -253,6 +255,7 @@ function showEditModal(loginName){
             "loginName":loginName
         },
         success : function(data) {
+            console.log(data);
             $("#editForm").find("input[name='userId']").val(data.userId);
             $("#editForm").find("input[name='userName']").val(data.userName);
             $("#editForm").find("input[name='loginName']").val(data.loginName);

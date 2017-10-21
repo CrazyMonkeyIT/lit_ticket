@@ -40,6 +40,16 @@ public class CustomerServiceImpl implements CustomerService {
         return result;
     }
 
+    /**
+     * 查询当前用户的客户列表（键值对）
+     * @param userId
+     * @return
+     */
+    @Override
+    public List<CustomerDO> selectCurrUserCustKV(Integer userId) {
+        return customerDOMapper.selectCurrUserCustKV(userId);
+    }
+
 
     /**
      * 更新客户信息
@@ -90,7 +100,10 @@ public class CustomerServiceImpl implements CustomerService {
      */
     @Override
     public boolean deleteByPrimaryKey(Integer id) {
-        int rows = customerDOMapper.deleteByPrimaryKey(id);
+        CustomerDO record = new CustomerDO();
+        record.setId(id);
+        record.setActive(0);
+        int rows = customerDOMapper.updateByPrimaryKeySelective(record);
         return (rows > 0);
     }
 }

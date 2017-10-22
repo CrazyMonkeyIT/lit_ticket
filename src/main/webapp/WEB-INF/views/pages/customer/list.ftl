@@ -223,9 +223,15 @@
      */
     function update(){
         var custName = $("#editForm").find("input[name='custName']").val();
+        var nationalStandardId = $("#editForm").find("input[name='nationalStandardId']").val();
+        var industrySasacId = $("#editForm").find("input[name='industrySasacId']").val();
         if(!custName){
             alert("客户名称必须填写");
             $("#editForm").find("input[name='custName']").focus();
+            return false;
+        }
+        if(!nationalStandardId || !industrySasacId){
+            alert("请选择国标行业和国资委行业");
             return false;
         }
         $.ajax({

@@ -157,8 +157,13 @@ public class LoginController {
 	 */
 	@RequestMapping("/updateSelectCust.html")
 	@ResponseBody
-	public Boolean updateSelectCust(HttpServletRequest request,Integer custId){
-		request.getSession().setAttribute("selectCustId",custId);
+	public Boolean updateSelectCust(HttpServletRequest request,Integer custId,String searchCustName){
+		if(custId != null) {
+			request.getSession().setAttribute("selectCustId", custId);
+		}
+		if(searchCustName != null){
+			request.getSession().setAttribute("searchCustName", searchCustName);
+		}
 		return true;
 	}
 }

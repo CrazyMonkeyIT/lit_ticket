@@ -1,4 +1,9 @@
-<div class="col-xs-12 col-sm-2">
+<style>
+    .right{
+        float:right;
+    }
+</style>
+<div class="col-xs-12 col-sm-2 no-padding no-margin">
     <div class="search-area well well-sm">
         <div class="search-filter-header bg-primary">
             <h5 class="smaller no-margin-bottom">

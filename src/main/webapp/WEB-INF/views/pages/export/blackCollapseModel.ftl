@@ -1,3 +1,4 @@
+<@ui.layout >
 <div class="panel panel-default">
     <div class="panel-body" style="height:65px">
         <div class="row">
@@ -8,3 +9,4 @@
         </div>
     </div>
 </div>
+</@ui.layout>

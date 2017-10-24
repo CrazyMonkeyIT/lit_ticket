@@ -10,11 +10,8 @@
 .filed-value{
     padding:5px 5px 5px 10px;
 }
-.right{
-    float:right;
-}
 </style>
-<div class="col-xs-12">
+<div class="col-xs-12 no-padding">
     <!-- 客户列表 -->
     <#include  "../../macro/leftCustList.ftl" />
     <div class="col-xs-12 col-sm-10">

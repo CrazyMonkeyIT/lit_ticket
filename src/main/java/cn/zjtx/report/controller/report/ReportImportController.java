@@ -22,7 +22,7 @@ public class ReportImportController extends BaseController{
     private static final Logger logger = LoggerFactory.getLogger(ReportImportController.class);
 
     /**
-     * 报表导入
+     * 进入报表导入页
      */
     @RequestMapping("/importPage.html")
     public String importPage(ModelMap modelMap){
@@ -32,10 +32,14 @@ public class ReportImportController extends BaseController{
 
     /**
      * 处理导入的文件
+     * @param reportTemplate 报表模板
+     * @param monetaryUnit 货币单位
+     * @param type 报表类型
      */
     @RequestMapping("/uploadFile.html")
     @ResponseBody
-    public JSONPObject uploadFile(@RequestParam(value = "file", required = false) MultipartFile file){
+    public JSONPObject uploadFile(String reportTemplate,String monetaryUnit,String type,
+                  @RequestParam(value = "file", required = false) MultipartFile file){
         return null;
     }
 }

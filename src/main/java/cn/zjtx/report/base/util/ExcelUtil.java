@@ -15,38 +15,27 @@ import java.lang.reflect.Method;
 import java.util.*;
 
 
+/**
+ *
+ * @author Bill
+ * 参考文献 http://blog.csdn.net/zhyh1986/article/details/8511186
+ * 该文献使用apache.jxi实现
+ * 本工具类为了兼容2003根2007以上excel使用apache.poi完成
+ *
+ * ExcelUtil.parseExcel(File excel, Class<T> [] clazzs) 实现将excel中多sheet页映射值到指定class<T>[]中
+ *
+ * TODO 作为一个工具类，暂时只完成了解析层，后续将维护成支持bean->excel层的展示
+ */
 public class ExcelUtil {
 
     //总行数
     private static int totalRows = 0;
     //总条数
     private static int totalCells = 0;
-    //错误信息接收器
-    private static String errorMsg;
 
-    //构造方法
-    public ExcelUtil() {
-    }
-
-    //获取总行数
-    public int getTotalRows() {
-        return totalRows;
-    }
-
-    //获取总列数
-    public int getTotalCells() {
-        return totalCells;
-    }
-
-    //获取错误信息
-    public String getErrorInfo() {
-        return errorMsg;
-    }
-
-
+    //判断是否为excel文件
     public static boolean validateExcel(String filePath) {
         if (filePath == null || !(isExcel2003(filePath) || isExcel2007(filePath))) {
-            errorMsg = "文件名不是excel格式";
             return false;
         }
         return true;
@@ -64,7 +53,6 @@ public class ExcelUtil {
 
 
     public static <T> Map<String,List<T>> parseExcel(File excel, Class<T> [] clazzs) throws Exception {
-
         Workbook wb = null;
         InputStream is = new FileInputStream(excel);
         if (isExcel2003(excel.getPath())) {
@@ -75,41 +63,6 @@ public class ExcelUtil {
 
         return parseExcel(wb,clazzs);
     }
-
-
-//    public static <T> List<T> parseExcel(Workbook wb, String[] beanProperties,
-//                                         Class<?>[] propertyTypes, Class<T> clazz) throws Exception {
-//        if (beanProperties == null || propertyTypes == null) {
-//            throw new Exception("必须指定Excel列映射的JavaBean属性及相应的数据类型.");
-//        }
-//        if (beanProperties.length > propertyTypes.length) {
-//            throw new Exception("给定的JavaBean属性为" + beanProperties.length +
-//                    "个, 数据类型为" + propertyTypes.length + "个, 个数不匹配.");
-//        }
-//        Method[] setMethods = new Method[beanProperties.length];
-//        int i = 0;
-//        for (String property : beanProperties) {
-//            String setMethodName = "set" + property.substring(0, 1).toUpperCase() +
-//                    property.substring(1);
-//            try {
-//                setMethods[i] = clazz.getDeclaredMethod(setMethodName, propertyTypes[i++]);
-//            } catch (SecurityException se) {
-//                throw new Exception("属性" + property + "对应的setter方法可能无法访问.", se);
-//            } catch (NoSuchMethodException e) {
-//                String paramType = propertyTypes[--i].getName();
-//                throw new Exception("属性" + property + "没有参数类型为" + paramType +
-//                        "的setter方法.", e);
-//            }
-//        }
-//      return parseExcel(wb, setMethods, propertyTypes, clazzs);
-//    }
-
-
-
-
-
-
-
 
     private static <T> Map<String,List<T>> parseExcel(Workbook workbook, Class<T> [] beanClazzs) throws Exception {
 
@@ -122,7 +75,8 @@ public class ExcelUtil {
             for (int m = 0;m < fields.length; m++){
                 String fieldName = fields[m].getName();
                 Class type = fields[m].getType();
-                Method method = cls.getDeclaredMethod("set" + fieldName.substring(0,1).toUpperCase()+ fieldName.substring(1),type);
+                Method method = cls.getDeclaredMethod(
+                        "set" + fieldName.substring(0,1).toUpperCase()+ fieldName.substring(1),type);
                 methods[m] = method;
             }
             Sheet sheet = workbook.getSheetAt(i);
@@ -156,9 +110,6 @@ public class ExcelUtil {
 
         return map;
     }
-
-
-
 
     private static void invokeSetterMethod(Method setterMethod, Object o, Cell cell,
                                            Class<?> paramType) throws Exception  {

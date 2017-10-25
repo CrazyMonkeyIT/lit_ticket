@@ -116,7 +116,6 @@ public class ExcelUtil {
         Map<String,List<T>> map = new HashMap<String, List<T>>();
 
         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {//获取每个Sheet表
-
             Class cls = beanClazzs[i];
             Field[] fields = beanClazzs[i].getDeclaredFields();
             Method[] methods = new Method[fields.length];
@@ -199,7 +198,7 @@ public class ExcelUtil {
     }
 
     public static void main(String[] args) {
-        File file = new File("/Users/Bill/Desktop/1.xlsx");
+        File file = new File(Thread.currentThread().getContextClassLoader().getResource("1.xlsx").getPath());
         try {
             Map<String,List<?>> result = parseExcel(file,new Class[]{A.class,B.class});
 

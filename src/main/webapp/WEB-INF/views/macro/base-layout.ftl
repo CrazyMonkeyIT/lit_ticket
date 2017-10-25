@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="${request.contextPath}/static/assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${request.contextPath}/static/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
     <!-- page specific plugin styles -->
-    <!-- text fonts -->
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/jquery-ui.custom.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/static/assets/css/jquery.gritter.min.css">
+	<!-- text fonts -->
     <link rel="stylesheet" href="${request.contextPath}/static/assets/css/fonts.googleapis.com.css" />
     <!-- ace styles -->
     <link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
@@ -21,6 +23,7 @@
     <!--[if lte IE 9]>
 	<link rel="stylesheet" href="${request.contextPath}/static/assets/css/ace-ie.min.css" />
     <![endif]-->
+    <style type="text/css">@keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-moz-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-webkit-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-ms-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}@-o-keyframes nodeInserted{from{outline-color:#fff}to{outline-color:#000}}.ace-save-state{animation-duration:10ms;-o-animation-duration:10ms;-ms-animation-duration:10ms;-moz-animation-duration:10ms;-webkit-animation-duration:10ms;animation-delay:0s;-o-animation-delay:0s;-ms-animation-delay:0s;-moz-animation-delay:0s;-webkit-animation-delay:0s;animation-name:nodeInserted;-o-animation-name:nodeInserted;-ms-animation-name:nodeInserted;-moz-animation-name:nodeInserted;-webkit-animation-name:nodeInserted}</style>
     <!-- ace settings handler -->
     <script src="${request.contextPath}/static/assets/js/ace-extra.min.js"></script>
     <!--[if lte IE 8]>
@@ -28,22 +31,33 @@
 	<script src="${request.contextPath}/static/assets/js/respond.min.js"></script>
     <![endif]-->
 
+
     <script src="${request.contextPath}/static/assets/js/jquery-2.1.4.min.js"></script>
 
     <!-- layui提示插件 -->
     <link href="${request.contextPath}/static/layui/css/layui.css" rel="stylesheet" type="text/css" />
     <script src="${request.contextPath}/static/layui/layui.js" type="text/javascript"></script>
-	<!-- 自定义confirm -->
+    <!-- 自定义confirm -->
     <script src="${request.contextPath}/static/assets/Ewin.js" type="text/javascript"></script>
+
 </head>
 	
 <body class="no-skin">
-	<div class="navbar navbar-default" id="navbar" style="background: #2C6AA0;">
+	<div class="navbar navbar-default ace-save-state" id="navbar" style="background: #2C6AA0;">
 		<script type="text/javascript">
-			try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+
 		</script>
 
-		<div class="navbar-container" id="navbar-container">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
 			<div class="navbar-header pull-left">
 				<a href="#" class="navbar-brand">
 					<small>
@@ -88,16 +102,46 @@
 		</div><!-- /.container -->
 	</div>
 
-	<div class="main-container" id="main-container">
+	<div class="main-container ace-save-state" id="main-container">
 		<script type="text/javascript">
-			try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+
+            try{ace.settings.loadState('main-container')}catch(e){}
 		</script>
 
-		<div class="main-container-inner">
-			<a class="menu-toggler" id="menu-toggler" href="#">
-				<span class="menu-text"></span>
-			</a>
-			<div class="sidebar" id="sidebar">
+		<!--<div class="main-container-inner">-->
+			<div class="sidebar" id="sidebar responsive ace-save-state" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+                <script type="text/javascript">
+                    try{ace.settings.loadState('sidebar')}catch(e){}
+                </script>
+                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                    <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                        <button class="btn btn-success">
+                            <i class="ace-icon fa fa-signal"></i>
+                        </button>
+
+                        <button class="btn btn-info">
+                            <i class="ace-icon fa fa-pencil"></i>
+                        </button>
+
+                        <button class="btn btn-warning">
+                            <i class="ace-icon fa fa-users"></i>
+                        </button>
+
+                        <button class="btn btn-danger">
+                            <i class="ace-icon fa fa-cogs"></i>
+                        </button>
+                    </div>
+
+                    <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                        <span class="btn btn-success"></span>
+
+                        <span class="btn btn-info"></span>
+
+                        <span class="btn btn-warning"></span>
+
+                        <span class="btn btn-danger"></span>
+                    </div>
+                </div>
 				<ul class="nav nav-list">
 					<#list menuList as menu>
 						<#if menu.resourceType == 0 && menu.parentId == 0>
@@ -170,8 +214,12 @@
 				<#include  "modifyPwd.ftl" />
 				<!-- 修改密码 end -->
 			</div><!-- /.main-content -->
-	</div><!-- /.main-container -->
+	<!--</div>--><!-- /.main-container -->
+
+
+
 	<script src="${request.contextPath}/static/assets/js/bootstrap.min.js"></script>
+
 	<!-- ace scripts -->
 	<script src="${request.contextPath}/static/assets/js/ace-elements.min.js"></script>
 	<script src="${request.contextPath}/static/assets/js/ace.min.js"></script>
@@ -182,6 +230,8 @@
      * 如果Ajax请求中，用户session已失效，则跳转登录页
      */
     jQuery(function($){
+
+
         // 备份jquery的ajax方法
         var _ajax= $.ajax;
         // 重写ajax方法

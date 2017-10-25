@@ -26,16 +26,14 @@ public class BaseController {
      * @return
      */
     public TBLoginUserDO getCurrentUser(){
-        Subject subject = SecurityUtils.getSubject();
-        if(subject == null || subject.getPrincipal() == null){
-            return null;
-        }
         TBLoginUserDO user = null;
         try {
-            user = (TBLoginUserDO) subject.getSession().getAttribute("currUser");
+            Subject subject = SecurityUtils.getSubject();
+            if(subject != null && subject.getPrincipal() != null) {
+                user = (TBLoginUserDO) subject.getSession().getAttribute("currUser");
+            }
         } catch (Exception e) {
-            logger.error("用户查询异常",e);
-            return null;
+            logger.error("获得当前用户异常",e);
         }
         return user;
     }

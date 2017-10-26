@@ -4,8 +4,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -54,12 +52,30 @@ public class ExcelUtil {
     }
 
 
+    /**
+     * 从行着手解析Excel
+     * @param excel  文件
+     * @param properties 要解析到bean的字段
+     * @param clazzs 要解析到哪个bean
+     * @param <T> bean泛型
+     * @return
+     * @throws Exception
+     */
     public static <T> Map<String,List<T>> parseExcelForRow(File excel, String[] properties,
                                                                Class<T> [] clazzs) throws Exception {
         Workbook wb = getWorkbook(excel);
         return parseExcel(wb,properties,clazzs,isRowParse);
     }
 
+    /**
+     * 从列着手解析
+     * @param excel  文件
+     * @param properties 要解析到bean的字段
+     * @param clazzs 要解析到哪个bean
+     * @param <T> bean泛型
+     * @return
+     * @throws Exception
+     */
     public static <T> Map<String,List<T>> parseExcelForCell(File excel, String[] properties,
                                                            Class<T> [] clazzs) throws Exception {
 
@@ -67,8 +83,6 @@ public class ExcelUtil {
         Workbook wb = getWorkbook(excel);
         return parseExcel(wb,properties,clazzs,isRowParse);
     }
-
-
 
     private static <T> Map<String,List<T>> parseExcel(Workbook workbook,String[] properties,
                                                                Class<T> [] beanClazzs,boolean isRowParse) throws Exception {
@@ -104,7 +118,6 @@ public class ExcelUtil {
         }finally {
             workbook.close();
         }
-
         return map;
     }
 
@@ -178,7 +191,6 @@ public class ExcelUtil {
     private static void invokeSetterMethod(Method setterMethod, Object o, Cell cell,
                                            Class<?> paramType) throws Exception  {
         try {
-
             setterMethod.invoke(o, getCellValue(cell,paramType));
 
         } catch (IllegalArgumentException e) {

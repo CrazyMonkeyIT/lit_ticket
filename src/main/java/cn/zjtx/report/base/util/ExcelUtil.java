@@ -28,8 +28,6 @@ import java.util.*;
  */
 public class ExcelUtil {
 
-//    private final static Logger LOGGER = LoggerFactory.getLogger(ExcelUtil.class);
-
     //总行数
     private static int totalRows = 0;
     //总条数
@@ -103,7 +101,6 @@ public class ExcelUtil {
             }
         } catch (Exception e) {
             e.getStackTrace();
-//            LOGGER.error("",e);
         }finally {
             workbook.close();
         }

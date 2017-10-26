@@ -3,33 +3,32 @@ package cn.zjtx.report.base.util;
 /**
  * 仅帮助理解类，回头删除
  */
-public class B {
-    private Integer seq;
-    private String ming;
-    private Integer age;
+public class B{
+    private String date;
+    private String name;
+    private String age;
 
-
-    public Integer getSeq() {
-        return seq;
+    public String getDate() {
+        return date;
     }
 
-    public void setSeq(Integer seq) {
-        this.seq = seq;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public String getMing() {
-        return ming;
+    public String getName() {
+        return name;
     }
 
-    public void setMing(String ming) {
-        this.ming = ming;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Integer getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(String age) {
         this.age = age;
     }
 }

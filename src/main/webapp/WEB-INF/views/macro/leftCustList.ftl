@@ -86,7 +86,8 @@ function updateSelectCust(custId,custName){
         url : basePath+"/updateSelectCust.html",
         type : 'post',
         data : {
-            "custId":custId
+            "custId":custId,
+            "custName":custName
         },
         success : function(data) {
             $("li[id^='ui-id']").removeClass("ui-state-focus");
@@ -96,5 +97,13 @@ function updateSelectCust(custId,custName){
             $("#custMenu").attr("aria-activedescendant","ui-id-"+custId);
         }
     });
+}
+
+/**
+ * 判断是否选择了客户
+ */
+function checkSelCust(){
+    var length = $("#custMenu").find("li.ui-state-focus").length;
+    return (length>0);
 }
 </script>

@@ -109,7 +109,7 @@
 		</script>
 
 		<!--<div class="main-container-inner">-->
-			<div class="sidebar" id="sidebar responsive ace-save-state" data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
+			<div id="sidebar" class="sidebar  responsive ace-save-state"  data-sidebar="true" data-sidebar-scroll="true" data-sidebar-hover="true">
                 <script type="text/javascript">
                     try{ace.settings.loadState('sidebar')}catch(e){}
                 </script>

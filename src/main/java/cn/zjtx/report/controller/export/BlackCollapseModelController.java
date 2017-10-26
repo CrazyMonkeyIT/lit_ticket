@@ -19,11 +19,12 @@ public class BlackCollapseModelController extends BaseController{
 
     /**
      * 页面
-     * @param mm
+     * @param modelMap
      * @return
      */
     @RequestMapping("/page.html")
-    public String page(ModelMap mm){
+    public String page(ModelMap modelMap){
+        modelMap.addAttribute("custList",getCurrCustList());
         return "pages/export/blackCollapseModel";
     }
 }

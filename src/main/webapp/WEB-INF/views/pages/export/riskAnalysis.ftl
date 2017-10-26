@@ -350,6 +350,10 @@ function removeCompareTime(){
 function reportCheck(){
     var selectTimeLength = $("#timeDiv").find("input[name='time']:checked").length;
     var selectYearLength = $("#yearDiv").find("input[name='year']:checked").length;
+    if(!checkSelCust()){
+        alert("请先选择一个客户");
+        return false;
+    }
     if(selectYearLength == 0){
         alert("请先选择分析年份！");
         return false;

@@ -41,8 +41,8 @@
                 </table>
             </div>
         </div>
-        <div class="col-xs-3"><span class="green middle bolder">企业名称：12213131 &nbsp;</span></div>
-        <div class="col-xs-3"><span class="green middle bolder">评价时期：31313131</span></div>
+        <div class="col-xs-3"><span class="green middle bolder">企业名称：<span id="enterpriseName"></span> &nbsp;</span></div>
+        <div class="col-xs-3"><span class="green middle bolder">评价时期：<span id="evaluateDate"></span></span></div>
         <table class="table table-bordered center" >
             <thead class="thin-border-bottom">
                 <tr>
@@ -85,9 +85,18 @@
                 </tr>
             </tbody>
         </table>
-        <div class="profile-user-info ">
+        <div class="profile-user-info no-padding no-margin">
+            <style>
+                .profile-user-info{
+                    font-size:12px;
+                }
+                .profile-info-name{
+                    width:60px;
+                }
+
+            </style>
             <div class="profile-info-row">
-                <div class="profile-info-name">说明：</div>
+                <div class="profile-info-name ">说明：</div>
                 <div class="profile-info-value">
                     <span>
                         <i class="ace-icon fa fa-caret-right blue"></i>
@@ -230,11 +239,35 @@
                 html += createSelectHtml("十二月份","month12");
             }
             $("select[name='time']").html(html);
+
+            changeEvaluateDate();
         });
+        /**
+         * 获取点击的客户
+         */
+        $("li[id^='ui-id']").click(function(){
+            $("#enterpriseName").html($(this).html());
+        });
+        if(!!'${selectCustName!""}'){
+            $("#enterpriseName").html('${selectCustName!""}');
+        }
+        $("select[name='year']").change(function(){
+            changeEvaluateDate();
+        });
+        $("select[name='time']").change(function(){
+            changeEvaluateDate();
+        });
+        changeEvaluateDate();
     });
     /** 创建下拉框 **/
     function createSelectHtml(name,value){
         return "<option value='"+value+"'>"+name+"</option>";
+    }
+    /** 设置评价日期 **/
+    function changeEvaluateDate(){
+        var year = $("select[name='year']").find("option:selected").text();
+        var time = $("select[name='time']").find("option:selected").text();
+        $("#evaluateDate").html(year+time);
     }
 </script>
 </@ui.layout>

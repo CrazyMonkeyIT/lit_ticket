@@ -1,0 +1,1212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="zjtx@192.168.1.2">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="zjtx">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="test"/>
+    <table id="7" parent="2" name="industry_sasac"/>
+    <table id="8" parent="2" name="t_b_assets_liabilities">
+      <Comment>资产负债表</Comment>
+    </table>
+    <table id="9" parent="2" name="t_b_cash_flow">
+      <Comment>现金流量表</Comment>
+    </table>
+    <table id="10" parent="2" name="t_b_income">
+      <Comment>利润表</Comment>
+    </table>
+    <table id="11" parent="2" name="t_b_login_user"/>
+    <table id="12" parent="2" name="t_b_resources"/>
+    <table id="13" parent="2" name="t_b_user_resource"/>
+    <column id="14" parent="7" name="ID">
+      <Position>1</Position>
+      <Comment>主键ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="15" parent="7" name="INDUSTRY_NAME">
+      <Position>2</Position>
+      <Comment>行业名称</Comment>
+      <DataType>varchar(126)|0</DataType>
+    </column>
+    <column id="16" parent="7" name="INDUSTRY_CODE">
+      <Position>3</Position>
+      <Comment>行业代码</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="17" parent="7" name="PARENT_ID">
+      <Position>4</Position>
+      <Comment>父类ID</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="18" parent="7" name="Computing_coefficient">
+      <Position>5</Position>
+      <Comment>计算系数</Comment>
+      <DataType>decimal(15,5)|0</DataType>
+    </column>
+    <column id="19" parent="7" name="ACTIVE">
+      <Position>6</Position>
+      <Comment>状态（0：失效；1：有效）</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="20" parent="7" name="create_time">
+      <Position>7</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="21" parent="7" name="update_time">
+      <Position>8</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="22" parent="7" name="order_no">
+      <Position>9</Position>
+      <Comment>排列序号</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="23" parent="7" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="24" parent="8" name="id">
+      <Position>1</Position>
+      <Comment>资产负债表id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="25" parent="8" name="report_date">
+      <Position>2</Position>
+      <Comment>报表日期</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="26" parent="8" name="monetary_unit">
+      <Position>3</Position>
+      <Comment>单位（1：元 2：万元）</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="27" parent="8" name="current_assets">
+      <Position>4</Position>
+      <Comment>流动资产</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="28" parent="8" name="cash_assets">
+      <Position>5</Position>
+      <Comment>货币资金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="29" parent="8" name="trading_assets">
+      <Position>6</Position>
+      <Comment>交易性金融资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="30" parent="8" name="derivative_assets">
+      <Position>7</Position>
+      <Comment>衍生金融资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="31" parent="8" name="notes_receivable">
+      <Position>8</Position>
+      <Comment>应收票据</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="32" parent="8" name="account_receivable">
+      <Position>9</Position>
+      <Comment>应收账款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="33" parent="8" name="advance_pay">
+      <Position>10</Position>
+      <Comment>预付款项</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="34" parent="8" name="interest_receivable">
+      <Position>11</Position>
+      <Comment>应收利息</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="35" parent="8" name="dividend_receivable">
+      <Position>12</Position>
+      <Comment>应收股利</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="36" parent="8" name="other_account_receivable">
+      <Position>13</Position>
+      <Comment>其他应收款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="37" parent="8" name="redemptory_monetary_capital_for_sale">
+      <Position>14</Position>
+      <Comment>买入返售金融资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="38" parent="8" name="stock">
+      <Position>15</Position>
+      <Comment>存货</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="39" parent="8" name="partition_available_sale_assets">
+      <Position>16</Position>
+      <Comment>划分为持有待售的资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="40" parent="8" name="unCurrent_assets_expire_one_year">
+      <Position>17</Position>
+      <Comment>一年内到期的非流动资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="41" parent="8" name="unamortized_expense">
+      <Position>18</Position>
+      <Comment>待摊费用</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="42" parent="8" name="pending_current_assets_loss">
+      <Position>19</Position>
+      <Comment>待处理流动资产损益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="43" parent="8" name="other_current_assets">
+      <Position>20</Position>
+      <Comment>其他流动资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="44" parent="8" name="total_current_assets">
+      <Position>21</Position>
+      <Comment>流动资产合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="45" parent="8" name="un_current_assets">
+      <Position>22</Position>
+      <Comment>非流动资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="46" parent="8" name="grant_loans_pad_money">
+      <Position>23</Position>
+      <Comment>发放贷款及垫款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="47" parent="8" name="available_sale_assets">
+      <Position>24</Position>
+      <Comment>可供出售金融资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="48" parent="8" name="hold_to_expire_assets">
+      <Position>25</Position>
+      <Comment>持有至到期投资</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="49" parent="8" name="long_receivable_account">
+      <Position>26</Position>
+      <Comment>长期应收款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="50" parent="8" name="long_stock_equity_invest">
+      <Position>27</Position>
+      <Comment>长期股权投资</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="51" parent="8" name="investment_real_estate">
+      <Position>28</Position>
+      <Comment>投资性房地产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="52" parent="8" name="net_fixed_assets">
+      <Position>29</Position>
+      <Comment>固定资产净额</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="53" parent="8" name="construction_progress">
+      <Position>30</Position>
+      <Comment>在建工程</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="54" parent="8" name="engineering_material">
+      <Position>31</Position>
+      <Comment>工程物资</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="55" parent="8" name="fix_assets_clear">
+      <Position>32</Position>
+      <Comment>固定资产清理</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="56" parent="8" name="productbility_assets">
+      <Position>33</Position>
+      <Comment>生产性生物资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="57" parent="8" name="public_welfare_assets">
+      <Position>34</Position>
+      <Comment>公益性生物资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="58" parent="8" name="oil_assets">
+      <Position>35</Position>
+      <Comment>油气资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="59" parent="8" name="intangible_assets">
+      <Position>36</Position>
+      <Comment>无形资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="60" parent="8" name="development_expenditure">
+      <Position>37</Position>
+      <Comment>开发支出</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="61" parent="8" name="goodwill">
+      <Position>38</Position>
+      <Comment>商誉</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="62" parent="8" name="long_unamortized_expense">
+      <Position>39</Position>
+      <Comment>长期待摊费用</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="63" parent="8" name="deferred_tax_assets">
+      <Position>40</Position>
+      <Comment>递延所得税资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="64" parent="8" name="other_uncurrent_assets">
+      <Position>41</Position>
+      <Comment>其他非流动资产</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="65" parent="8" name="total_uncurrent_assets">
+      <Position>42</Position>
+      <Comment>非流动资产合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="66" parent="8" name="total_assets">
+      <Position>43</Position>
+      <Comment>资产总计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="67" parent="8" name="current_liabilities">
+      <Position>44</Position>
+      <Comment>流动负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="68" parent="8" name="short_term_borrowing">
+      <Position>45</Position>
+      <Comment>短期借款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="69" parent="8" name="trading_liabilities">
+      <Position>46</Position>
+      <Comment>交易性金融负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="70" parent="8" name="notes_payable">
+      <Position>47</Position>
+      <Comment>应付票据</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="71" parent="8" name="accounts_payable">
+      <Position>48</Position>
+      <Comment>应付账款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="72" parent="8" name="advance_receipt">
+      <Position>49</Position>
+      <Comment>预收款项</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="73" parent="8" name="fee_payable">
+      <Position>50</Position>
+      <Comment>应付手续费及佣金</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="74" parent="8" name="salary_payable">
+      <Position>51</Position>
+      <Comment>应付职工薪酬</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="75" parent="8" name="tax_payable">
+      <Position>52</Position>
+      <Comment>应交税费</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="76" parent="8" name="interest_payable">
+      <Position>53</Position>
+      <Comment>应付利息</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="77" parent="8" name="dividend_payable">
+      <Position>54</Position>
+      <Comment>应付股利</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="78" parent="8" name="other_account_payable">
+      <Position>55</Position>
+      <Comment>其他应付款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="79" parent="8" name="accrued_expenses">
+      <Position>56</Position>
+      <Comment>预提费用</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="80" parent="8" name="deferred_income_one_year">
+      <Position>57</Position>
+      <Comment>一年内的递延收益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="81" parent="8" name="short_term_bond_payable">
+      <Position>58</Position>
+      <Comment>应付短期债券</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="82" parent="8" name="uncurrent_liabilities_expire_one_year">
+      <Position>59</Position>
+      <Comment>一年内到期的非流动负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="83" parent="8" name="ohter_current_liabilities">
+      <Position>60</Position>
+      <Comment>其他流动负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="84" parent="8" name="total_current_liabilities">
+      <Position>61</Position>
+      <Comment>流动负债合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="85" parent="8" name="long_term_borrowing">
+      <Position>62</Position>
+      <Comment>长期借款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="86" parent="8" name="bond_payable">
+      <Position>63</Position>
+      <Comment>应付债券</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="87" parent="8" name="long_term_account_payable">
+      <Position>64</Position>
+      <Comment>长期应付款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="88" parent="8" name="long_term_salary_payable">
+      <Position>65</Position>
+      <Comment>长期应付职工薪酬</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="89" parent="8" name="special_account_payable">
+      <Position>66</Position>
+      <Comment>专项应付款</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="90" parent="8" name="predict_uncurrent_liabilities">
+      <Position>67</Position>
+      <Comment>预计非流动负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="91" parent="8" name="deferred_tax_liabilities">
+      <Position>68</Position>
+      <Comment>递延所得税负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="92" parent="8" name="long_deferred_income">
+      <Position>69</Position>
+      <Comment>长期递延收益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="93" parent="8" name="other_uncurrent_liabilities">
+      <Position>70</Position>
+      <Comment>其他非流动负债</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="94" parent="8" name="total_uncurrent_liabilities">
+      <Position>71</Position>
+      <Comment>非流动负债合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="95" parent="8" name="total_liabilities">
+      <Position>72</Position>
+      <Comment>负债合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="96" parent="8" name="owner_equity">
+      <Position>73</Position>
+      <Comment>所有者权益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="97" parent="8" name="paidin_capita">
+      <Position>74</Position>
+      <Comment>实收资本(或股本)</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="98" parent="8" name="capital_reserve">
+      <Position>75</Position>
+      <Comment>资本公积</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="99" parent="8" name="treasury_stock">
+      <Position>76</Position>
+      <Comment>库存股</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="100" parent="8" name="other_comprehensive_income">
+      <Position>77</Position>
+      <Comment>其他综合收益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="101" parent="8" name="special_reserves">
+      <Position>78</Position>
+      <Comment>专项储备</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="102" parent="8" name="surplus_reserves">
+      <Position>79</Position>
+      <Comment>盈余公积</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="103" parent="8" name="general_risk_capital_pre">
+      <Position>80</Position>
+      <Comment>一般风险准备</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="104" parent="8" name="undistributed_profit">
+      <Position>81</Position>
+      <Comment>未分配利润</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="105" parent="8" name="total_parent_company_shareholder_profit">
+      <Position>82</Position>
+      <Comment>归属于母公司股东权益合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="106" parent="8" name="minority_shareholder_profit">
+      <Position>83</Position>
+      <Comment>少数股东权益</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="107" parent="8" name="total_owner_profit">
+      <Position>84</Position>
+      <Comment>所有者权益(或股东权益)合计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="108" parent="8" name="total_liabilities_owner_profit">
+      <Position>85</Position>
+      <Comment>负债和所有者权益(或股东权益)总计</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="109" parent="9" name="id">
+      <Position>1</Position>
+      <Comment>现金流量表id</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="110" parent="9" name="report_date">
+      <Position>2</Position>
+      <Comment>报表日期</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="111" parent="9" name="monetary_unit">
+      <Position>3</Position>
+      <Comment>单位(1：元 2：万元)</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="112" parent="9" name="total_operate_activity_cash_flow">
+      <Position>4</Position>
+      <Comment>经营活动产生的总现金流量</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="113" parent="9" name="sell_goods_labour_cash">
+      <Position>5</Position>
+      <Comment>销售商品、提供劳务收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="114" parent="9" name="receive_tax">
+      <Position>6</Position>
+      <Comment>收到的税费返还</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="115" parent="9" name="receive_operate_activit_cash">
+      <Position>7</Position>
+      <Comment>收到的其他与经营活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="116" parent="9" name="operate_activit_subtotal_inflow_cash">
+      <Position>8</Position>
+      <Comment>经营活动现金流入小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="117" parent="9" name="buy_goods_labour_cash">
+      <Position>9</Position>
+      <Comment>购买商品、接受劳务支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="118" parent="9" name="pay_to_worker_cash">
+      <Position>10</Position>
+      <Comment>支付给职工以及为职工支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="119" parent="9" name="pay_tax">
+      <Position>11</Position>
+      <Comment>支付的各项税费</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="120" parent="9" name="pay_operate_activit_cash">
+      <Position>12</Position>
+      <Comment>支付的其他与经营活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="121" parent="9" name="operate_activit_subtotal_outflow_cash">
+      <Position>13</Position>
+      <Comment>经营活动现金流出小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="122" parent="9" name="operate_activit_net_cash_flow">
+      <Position>14</Position>
+      <Comment>经营活动产生的现金流量净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="123" parent="9" name="total_invest_activity_cash_flow">
+      <Position>15</Position>
+      <Comment>投资活动产生的现金流量</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="124" parent="9" name="refund_invest_cash">
+      <Position>16</Position>
+      <Comment>收回投资所收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="125" parent="9" name="receive_income_invest_cash">
+      <Position>17</Position>
+      <Comment>取得投资收益所收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="126" parent="9" name="dispose_fix_intangible_other_net_cash">
+      <Position>18</Position>
+      <Comment>处置固定资产、无形资产和其他长期资产所收回的现金净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="127" parent="9" name="dispose_subsidiary_other_net_cash">
+      <Position>19</Position>
+      <Comment>处置子公司及其他营业单位收到的现金净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="128" parent="9" name="receive_invest_activit_cash">
+      <Position>20</Position>
+      <Comment>收到的其他与投资活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="129" parent="9" name="invest_activity_subtotal_inflow_cash">
+      <Position>21</Position>
+      <Comment>投资活动现金流入小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="130" parent="9" name="build_fix_intangible_other_net_cash">
+      <Position>22</Position>
+      <Comment>购建固定资产、无形资产和其他长期资产所支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="131" parent="9" name="invest_pay_cash">
+      <Position>23</Position>
+      <Comment>投资所支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="132" parent="9" name="receive_subsidiary_orther_pay_net_cash">
+      <Position>24</Position>
+      <Comment>取得子公司及其他营业单位支付的现金净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="133" parent="9" name="pay_invest_activit_cash">
+      <Position>25</Position>
+      <Comment>支付的其他与投资活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="134" parent="9" name="invest_activit_subtotal_outflow_cash">
+      <Position>26</Position>
+      <Comment>投资活动现金流出小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="135" parent="9" name="invest_activit_net_cash_flow">
+      <Position>27</Position>
+      <Comment>投资活动产生的现金流量净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="136" parent="9" name="total_financing_activit_cash_flow">
+      <Position>28</Position>
+      <Comment>总筹资活动产生的现金流量</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="137" parent="9" name="invest_receive_cash">
+      <Position>29</Position>
+      <Comment>吸收投资收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="138" parent="9" name="subsidiary_receive_stock_cash">
+      <Position>30</Position>
+      <Comment>子公司吸收少数股东投资收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="139" parent="9" name="receive_borrow_cash">
+      <Position>31</Position>
+      <Comment>取得借款收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="140" parent="9" name="receive_bond_cash">
+      <Position>32</Position>
+      <Comment>发行债券收到的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="141" parent="9" name="receive_financing_activit_cash">
+      <Position>33</Position>
+      <Comment>收到其他与筹资活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="142" parent="9" name="financing_activity_subtotal_inflow_cash">
+      <Position>34</Position>
+      <Comment>筹资活动现金流入小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="143" parent="9" name="repay_debt_cash">
+      <Position>35</Position>
+      <Comment>偿还债务支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="144" parent="9" name="repay_debt_profit_interest_cash">
+      <Position>36</Position>
+      <Comment>分配股利、利润或偿付利息所支付的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="145" parent="9" name="subsidiary_pay_stock_debt">
+      <Position>37</Position>
+      <Comment>子公司支付给少数股东的股利、利润</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="146" parent="9" name="pay_financing_activit_cash">
+      <Position>38</Position>
+      <Comment>支付其他与筹资活动有关的现金</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="147" parent="9" name="financing_activity_subtotal_outflow_cash">
+      <Position>39</Position>
+      <Comment>筹资活动现金流出小计</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="148" parent="9" name="financing_activity_net_cash_flow">
+      <Position>40</Position>
+      <Comment>筹资活动产生的现金流量净额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="149" parent="9" name="exchange_rate_cash_effect">
+      <Position>41</Position>
+      <Comment>汇率变动对现金及现金等价物的影响</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="150" parent="9" name="cash_equ_net_increase_quota">
+      <Position>42</Position>
+      <Comment>现金及现金等价物净增加额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="151" parent="9" name="opening_cash_equivalent_balance">
+      <Position>43</Position>
+      <Comment>期初现金及现金等价物余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="152" parent="9" name="ending_cash_equ_balance">
+      <Position>44</Position>
+      <Comment>期末现金及现金等价物余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="153" parent="9" name="annotation">
+      <Position>45</Position>
+      <Comment>附注</Comment>
+      <DataType>varchar(100)|0</DataType>
+    </column>
+    <column id="154" parent="9" name="net_profit">
+      <Position>46</Position>
+      <Comment>净利润</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="155" parent="9" name="minority_shareholder_equity">
+      <Position>47</Position>
+      <Comment>少数股东权益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="156" parent="9" name="unidentified_invest_loss">
+      <Position>48</Position>
+      <Comment>未确认的投资损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="157" parent="9" name="property_depreciation_prepare">
+      <Position>49</Position>
+      <Comment>资产减值准备</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="158" parent="9" name="fix_oil_product_deprecition">
+      <Position>50</Position>
+      <Comment>固定资产折旧、油气资产折耗、生产性物资折旧</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="159" parent="9" name="intangible_assets_amortization">
+      <Position>51</Position>
+      <Comment>无形资产摊销</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="160" parent="9" name="long_deferred_expense_amortization">
+      <Position>52</Position>
+      <Comment>长期待摊费用摊销</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="161" parent="9" name="deferred_expense_sub">
+      <Position>53</Position>
+      <Comment>待摊费用的减少</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="162" parent="9" name="drawing_expense_add">
+      <Position>54</Position>
+      <Comment>预提费用的增加</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="163" parent="9" name="dispose_fix_intangible_other_loss">
+      <Position>55</Position>
+      <Comment>处置固定资产、无形资产和其他长期资产的损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="164" parent="9" name="fix_assets_scrap_loss">
+      <Position>56</Position>
+      <Comment>固定资产报废损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="165" parent="9" name="fair_val_variatio_loss">
+      <Position>57</Position>
+      <Comment>公允价值变动损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="166" parent="9" name="deferred_earnings_add">
+      <Position>58</Position>
+      <Comment>递延收益增加（减：减少）</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="167" parent="9" name="predict_liabilities">
+      <Position>59</Position>
+      <Comment>预计负债</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="168" parent="9" name="financial_expense">
+      <Position>60</Position>
+      <Comment>财务费用</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="169" parent="9" name="invest_loss">
+      <Position>61</Position>
+      <Comment>投资损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="170" parent="9" name="deferred_tax_assets_sub">
+      <Position>62</Position>
+      <Comment>递延所得税资产减少</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="171" parent="9" name="deferred_tax_liabilities_add">
+      <Position>63</Position>
+      <Comment>递延所得税负债增加</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="172" parent="9" name="stock_sub">
+      <Position>64</Position>
+      <Comment>存货的减少</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="173" parent="9" name="receivables_sub">
+      <Position>65</Position>
+      <Comment>经营性应收项目的减少</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="174" parent="9" name="payables_add">
+      <Position>66</Position>
+      <Comment>经营性应付项目的增加</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="175" parent="9" name="done_unbalanced_sub">
+      <Position>67</Position>
+      <Comment>已完工尚未结算款的减少(减:增加)</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="176" parent="9" name="balanced_undone_add">
+      <Position>68</Position>
+      <Comment>已结算尚未完工款的增加(减:减少)</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="177" parent="9" name="others">
+      <Position>69</Position>
+      <Comment>其他</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="178" parent="9" name="convert_debt_to_capital">
+      <Position>70</Position>
+      <Comment>债务转为资本</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="179" parent="9" name="convertible_bond_one_year">
+      <Position>71</Position>
+      <Comment>一年内到期的可转换公司债券</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="180" parent="9" name="financing_to_fix_asset">
+      <Position>72</Position>
+      <Comment>融资租入固定资产</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="181" parent="9" name="cash_ending_balance">
+      <Position>73</Position>
+      <Comment>现金的期末余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="182" parent="9" name="cash_initial_balance">
+      <Position>74</Position>
+      <Comment>现金的期初余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="183" parent="9" name="cash_equivalent_ending_balance">
+      <Position>75</Position>
+      <Comment>现金等价物的期末余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="184" parent="9" name="cash_equivalent_initial_balance">
+      <Position>76</Position>
+      <Comment>现金等价物的期初余额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="185" parent="9" name="cash_equivalent_net_increase_quota">
+      <Position>77</Position>
+      <Comment>现金及现金等价物的净增加额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="186" parent="10" name="id">
+      <Position>1</Position>
+      <Comment>主键id</Comment>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="187" parent="10" name="report_date">
+      <Position>2</Position>
+      <Comment>报表日期(精确到天)</Comment>
+      <DataType>date|0</DataType>
+    </column>
+    <column id="188" parent="10" name="monetary_unit">
+      <Position>3</Position>
+      <Comment>单位(1：元 2：万元)</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="189" parent="10" name="total_operating_income">
+      <Position>4</Position>
+      <Comment>营业总收入</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="190" parent="10" name="operating_income">
+      <Position>5</Position>
+      <Comment>营业收入</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="191" parent="10" name="total_operating_cost">
+      <Position>6</Position>
+      <Comment>营业总成本</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="192" parent="10" name="operating_cost">
+      <Position>7</Position>
+      <Comment>营业成本</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="193" parent="10" name="oparating_tax_annex">
+      <Position>8</Position>
+      <Comment>营业税金及附加</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="194" parent="10" name="selling_expenses">
+      <Position>9</Position>
+      <Comment>销售费用</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="195" parent="10" name="adminisstrative_expenses">
+      <Position>10</Position>
+      <Comment>管理费用</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="196" parent="10" name="financial_expense">
+      <Position>11</Position>
+      <Comment>财务费用
+</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="197" parent="10" name="assets_devaluation_loss">
+      <Position>12</Position>
+      <Comment>资产减值损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="198" parent="10" name="fair_val_variation_income">
+      <Position>13</Position>
+      <Comment>公允价值变动收益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="199" parent="10" name="investments_income">
+      <Position>14</Position>
+      <Comment>投资收益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="200" parent="10" name="investments_joint_venture_income">
+      <Position>15</Position>
+      <Comment>对联营企业和合营企业的投资收益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="201" parent="10" name="exchange_income">
+      <Position>16</Position>
+      <Comment>汇兑收益
+</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="202" parent="10" name="operating_profit">
+      <Position>17</Position>
+      <Comment>营业总利润</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="203" parent="10" name="nonbusiness_income">
+      <Position>18</Position>
+      <Comment>营业外收入</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="204" parent="10" name="expenditure_nonbusiness">
+      <Position>19</Position>
+      <Comment>营业外支出</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="205" parent="10" name="non_current_loss">
+      <Position>20</Position>
+      <Comment>非流动资产处置损失</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="206" parent="10" name="total_profit">
+      <Position>21</Position>
+      <Comment>利润总额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="207" parent="10" name="income_tax_expenses">
+      <Position>22</Position>
+      <Comment>所得税费用</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="208" parent="10" name="total_net_profit">
+      <Position>23</Position>
+      <Comment>总净利润</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="209" parent="10" name="parent_company_net_profit">
+      <Position>24</Position>
+      <Comment>归属于母公司所有者的净利润</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="210" parent="10" name="minority_interest_loss">
+      <Position>25</Position>
+      <Comment>少数股东损益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="211" parent="10" name="eps">
+      <Position>26</Position>
+      <Comment>每股收益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="212" parent="10" name="basic_eps">
+      <Position>27</Position>
+      <Comment>基本每股收益(元/股)</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="213" parent="10" name="diluted_eps">
+      <Position>28</Position>
+      <Comment>稀释每股收益(元/股)</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="214" parent="10" name="oci">
+      <Position>29</Position>
+      <Comment>其他综合收益</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="215" parent="10" name="total_comprehensive_income">
+      <Position>30</Position>
+      <Comment>综合收益总额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="216" parent="10" name="total_parent_company_income">
+      <Position>31</Position>
+      <Comment>归属于母公司所有者的综合收益总额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <column id="217" parent="10" name="totalInority_stock_income">
+      <Position>32</Position>
+      <Comment>归属于少数股东的综合收益总额</Comment>
+      <DataType>decimal(10)|0</DataType>
+    </column>
+    <key id="218" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="219" parent="11" name="user_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="220" parent="11" name="user_name">
+      <Position>2</Position>
+      <Comment>用户姓名</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="221" parent="11" name="login_name">
+      <Position>3</Position>
+      <Comment>登录名</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="222" parent="11" name="login_pwd">
+      <Position>4</Position>
+      <DataType>varchar(128)|0</DataType>
+    </column>
+    <column id="223" parent="11" name="user_status">
+      <Position>5</Position>
+      <Comment>用户状态(0:初始化，1：正常，2：冻结，3：过期)</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="224" parent="11" name="login_invalid">
+      <Position>6</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="225" parent="11" name="parent_id">
+      <Position>7</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="226" parent="11" name="last_login_time">
+      <Position>8</Position>
+      <Comment>最近登录时间</Comment>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="227" parent="11" name="create_time">
+      <Position>9</Position>
+      <Comment>创建时间</Comment>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="228" parent="11" name="last_login_ip">
+      <Position>10</Position>
+      <Comment>最后一次登录的IP</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="229" parent="11" name="update_time">
+      <Position>11</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <key id="230" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="231" parent="12" name="resource_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="232" parent="12" name="resource_name">
+      <Position>2</Position>
+      <Comment>资源名称</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="233" parent="12" name="resource_code">
+      <Position>3</Position>
+      <Comment>资源代码</Comment>
+      <DataType>varchar(64)|0</DataType>
+    </column>
+    <column id="234" parent="12" name="resource_url">
+      <Position>4</Position>
+      <Comment>资源链接</Comment>
+      <DataType>varchar(256)|0</DataType>
+    </column>
+    <column id="235" parent="12" name="resource_desc">
+      <Position>5</Position>
+      <DataType>varchar(512)|0</DataType>
+    </column>
+    <column id="236" parent="12" name="css_cls">
+      <Position>6</Position>
+      <Comment>资源样式</Comment>
+      <DataType>varchar(45)|0</DataType>
+    </column>
+    <column id="237" parent="12" name="order_no">
+      <Position>7</Position>
+      <Comment>排序号</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="238" parent="12" name="parent_id">
+      <Position>8</Position>
+      <Comment>父资源ID</Comment>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="239" parent="12" name="resource_type">
+      <Position>9</Position>
+      <Comment>资源类型：0：菜单；1：按钮</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="240" parent="12" name="active">
+      <Position>10</Position>
+      <Comment>可用状态(0:不可用，1：可用)</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="241" parent="12" name="create_time">
+      <Position>11</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="242" parent="12" name="update_time">
+      <Position>12</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <key id="243" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>resource_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="244" parent="13" name="user_resource_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="245" parent="13" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="246" parent="13" name="resource_id">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="247" parent="13" name="active">
+      <Position>4</Position>
+      <Comment>可用状态(0:不要用，1：可用)</Comment>
+      <DataType>int(11)|0</DataType>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="248" parent="13" name="create_time">
+      <Position>5</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <column id="249" parent="13" name="update_time">
+      <Position>6</Position>
+      <DataType>timestamp|0</DataType>
+    </column>
+    <index id="250" parent="13" name="idx_user_resource_1">
+      <ColNames>user_id
+resource_id</ColNames>
+    </index>
+    <key id="251" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>user_resource_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>

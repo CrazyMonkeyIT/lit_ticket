@@ -7,7 +7,7 @@
     <meta http-equiv="pragma" content="no-cache"></meta>
     <meta http-equiv="cache-control" content="no-cache"></meta>
     <meta http-equiv="expires" content="0"></meta>
-    <title>上海专精特新</title>
+    <title>中小企业商票信用风险测评预警系统</title>
     <link href="${request.contextPath}/static/login/css/default.css" rel="stylesheet" type="text/css" />
     <!--必要样式-->
     <link href="${request.contextPath}/static/login/css/styles.css" rel="stylesheet" type="text/css" />
@@ -20,7 +20,7 @@
 <canvas></canvas>
 <div class='login'>
     <div class='login_title' style="text-align:center;">
-        <span>上海专精特新</span>
+        <span>商票信用风险测评预警系统</span>
     </div>
     <div class='login_fields'>
         <div class='login_fields__user'>
@@ -53,11 +53,15 @@
         <div class='login_fields__submit' style="text-align:center;">
             <input type='button' value='登录' />
         </div>
+        <div style="clear: both;"></div>
+        <div class="login_ext" style="text-align:center;">
+            <span><a href="#">注册</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">忘记密码?</a></span>
+        </div>
     </div>
     <div class='success'>
     </div>
     <div class='disclaimer' >
-        <p>欢迎登录上海专精特新管理系统</p>
+        <p>欢迎登录中小企业商票信用风险测评预警系统</p>
     </div>
 </div>
 <div class='authent'>

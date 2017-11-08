@@ -20,4 +20,9 @@ public class DeclareController extends BaseController{
     public String page(){
         return "pages/riskController/declare";
     }
+
+    @RequestMapping("/admittance.html")
+    public String admittance(){
+        return "pages/riskController/admittance";
+    }
 }

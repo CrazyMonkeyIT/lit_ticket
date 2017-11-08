@@ -88,7 +88,7 @@
         <div class="profile-user-info no-padding no-margin">
             <style>
                 .profile-user-info{
-                    font-size:12px;
+                    font-size:13px;
                 }
                 .profile-info-name{
                     width:60px;

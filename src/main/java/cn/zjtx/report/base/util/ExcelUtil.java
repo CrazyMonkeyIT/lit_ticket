@@ -17,7 +17,7 @@ import java.util.*;
  *
  * @author Bill
  * 参考文献 http://blog.csdn.net/zhyh1986/article/details/8511186
- * 该文献使用apache.jxi实现啊
+ * 该文献使用apache.jxi实现
  * 本工具类为了兼容2003根2007以上excel使用apache.poi完成
  *
  * ExcelUtil.parseExcel(File excel, Class<T> [] clazzs) 实现将excel中多sheet页映射值到指定class<T>[]中
